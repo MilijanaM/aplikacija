@@ -1,0 +1,21 @@
+{
+  "name": "aplikacija.demo-app",
+  "version": "1.0.0",
+  "keywords": [
+    "nodejs",
+    "piivt",
+    "singidunum"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Milijana Miladinovic <milijana.miladinovic91@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
