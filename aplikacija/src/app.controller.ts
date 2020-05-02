@@ -1,5 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { AdminService } from './services/admin/admin.service';
+import { Admin } from 'entities/admin.entity';
 
 @Controller()
 export class AppController {
@@ -15,7 +17,7 @@ export class AppController {
 
 
   @Get('api/admin') // http:localhost:3000/api/admin
-  getAllAdmins(): Promise< Admin[]> {
+  getAllAdmins(): Promise< Admin []> {
     return this.adminService.getAll();
 
   }
