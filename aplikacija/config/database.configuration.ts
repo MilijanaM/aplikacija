@@ -1,6 +1,6 @@
 export const DatabaseConfiguration = {
 
-    hostame: 'localhost',
+    hostname: 'localhost',
     username: 'aplikacija',
     password: 'aplikacija',
     database: 'aplikacija'

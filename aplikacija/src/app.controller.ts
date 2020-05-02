@@ -3,15 +3,20 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  @Get() // http:localhost:3000/
-  getHello(): string{
 
-    return 'Hello world!';
+  constructor(
+    private adminService: AdminService
+  ){}
+  @Get() // http:localhost:3000/
+  getIndex(): string{
+
+    return 'Home page!!';
   }
 
 
-  @Get('world') // http:localhost:3000/world/
-  getWorld(): string {
-    return 'World!!!';
+  @Get('api/admin') // http:localhost:3000/api/admin
+  getAllAdmins(): Promise< Admin[]> {
+    return this.adminService.getAll();
+
   }
 }
