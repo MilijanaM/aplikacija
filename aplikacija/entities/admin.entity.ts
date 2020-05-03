@@ -14,7 +14,7 @@ export class Admin {
   @PrimaryGeneratedColumn({ type: "int", name: "admin_id", unsigned: true })
   adminId: number;
 
-  @Column()({
+  @Column({
 
     type: "varchar",
     unique: true,

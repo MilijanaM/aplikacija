@@ -12,6 +12,7 @@ export class AppController {
   constructor(
     private adminService: AdminService
   ){}
+  
   @Get() // http:localhost:3000/
   getIndex(): string{
 
@@ -19,5 +20,5 @@ export class AppController {
   }
 
 
-  }
+  
 }
