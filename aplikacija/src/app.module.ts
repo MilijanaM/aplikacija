@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { AppController } from './controllers/app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {DatabaseConfiguration} from 'config/database.configuration';
@@ -12,6 +12,7 @@ import { Product } from 'entities/product.entity';
 import { Inbox } from 'entities/inbox.entity';
 import { News } from 'entities/news.entity';
 import { ProductPrice } from 'entities/product-price.entity';
+import { AdminController } from './controllers/api/admin.controller';
 
 
 
@@ -41,7 +42,7 @@ import { ProductPrice } from 'entities/product-price.entity';
 
     TypeOrmModule.forFeature([Admin])
   ],
-  controllers: [AppController],
+  controllers: [AppController, AdminController],
   providers: [AppService, AdminService],
 })
 export class AppModule {}
