@@ -7,24 +7,29 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Product } from "./Product";
+
+import { Admin } from "./admin.entity";
+import { Product } from "./product.entity";
+
+
 
 @Index("fk_category_parent__category_id", ["parentCategoryId"], {})
-@Entity("category", { schema: "aplikacija" })
+@Entity("category")
 export class Category {
   @PrimaryGeneratedColumn({ type: "int", name: "category_id", unsigned: true })
   categoryId: number;
 
-  @Column("varchar", { name: "name", length: 50, default: () => "'0'" })
+  @Column({type: "varchar", name: "name", length: 50})
   name: string;
 
-  @Column("varchar", { name: "image_path", length: 255, default: () => "'0'" })
+  @Column( {type: "varchar",name: "image_path", length: 255})
   imagePath: string;
 
-  @Column("int", {
+  @Column( {
+    type: "int",
     name: "parent__category_id",
     nullable: true,
-    unsigned: true,
+    unsigned: true
   })
   parentCategoryId: number | null;
 

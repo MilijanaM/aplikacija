@@ -6,24 +6,24 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Admin } from "./Admin";
+import { Admin } from "./admin.entity";
 
 @Index("fk_news_admin_id", ["adminId"], {})
-@Entity("news", { schema: "aplikacija" })
+@Entity("news")
 export class News {
   @PrimaryGeneratedColumn({ type: "int", name: "news_id", unsigned: true })
   newsId: number;
 
-  @Column("int", { name: "caption", default: () => "'0'" })
+  @Column( {type: "int", name: "caption"})
   caption: number;
 
-  @Column("text", { name: "text" })
+  @Column( { type: "text",name: "text" })
   text: string;
 
-  @Column("varchar", { name: "picture", length: 128 })
+  @Column( {type: "varchar", name: "picture", length: 128 })
   picture: string;
 
-  @Column("int", { name: "admin_id", unsigned: true, default: () => "'0'" })
+  @Column( {type: "int", name: "admin_id", unsigned: true })
   adminId: number;
 
   @ManyToOne(() => Admin, (admin) => admin.news, {

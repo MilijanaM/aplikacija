@@ -6,10 +6,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Product } from "./Product";
+import { Product } from "./product.entity";
 
 @Index("fk_product_price_product_id", ["productId"], {})
-@Entity("product_price", { schema: "aplikacija" })
+@Entity("product_price")
 export class ProductPrice {
   @PrimaryGeneratedColumn({
     type: "int",
@@ -18,7 +18,8 @@ export class ProductPrice {
   })
   productPriceId: number;
 
-  @Column("decimal", {
+  @Column( {
+    type:"decimal",
     name: "price",
     precision: 10,
     scale: 2,
@@ -26,13 +27,14 @@ export class ProductPrice {
   })
   price: string;
 
-  @Column("timestamp", {
+  @Column( { 
+    type: "timestamp",
     name: "created_at",
     default: () => "CURRENT_TIMESTAMP",
   })
   createdAt: Date;
 
-  @Column("int", { name: "product_id", unsigned: true, default: () => "'0'" })
+  @Column( {type: "int",name: "product_id", unsigned: true })
   productId: number;
 
   @ManyToOne(() => Product, (product) => product.productPrices, {

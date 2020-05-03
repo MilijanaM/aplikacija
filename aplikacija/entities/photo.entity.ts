@@ -6,21 +6,21 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Product } from "./Product";
+import { Product } from "./product.entity";
 
 @Index("fk_photo_product_id", ["productId"], {})
-@Entity("photo", { schema: "aplikacija" })
+@Entity("photo")
 export class Photo {
   @PrimaryGeneratedColumn({ type: "int", name: "photo_id", unsigned: true })
   photoId: number;
 
-  @Column("varchar", { name: "description", length: 255, default: () => "'0'" })
+  @Column( { type: "varchar",name: "description", length: 255, default: () => "'0'" })
   description: string;
 
-  @Column("varchar", { name: "image_path", length: 255, default: () => "'0'" })
+  @Column( {type: "varchar", name: "image_path", length: 255, default: () => "'0'" })
   imagePath: string;
 
-  @Column("int", { name: "product_id", unsigned: true, default: () => "'0'" })
+  @Column( {type: "int", name: "product_id", unsigned: true, default: () => "'0'" })
   productId: number;
 
   @ManyToOne(() => Product, (product) => product.photos, {

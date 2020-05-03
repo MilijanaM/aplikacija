@@ -7,12 +7,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Photo } from "./Photo";
-import { Category } from "./Category";
+import { Photo } from "./photo.entity";
+import { Category } from "./category.entity";
 import { ProductPrice } from "./ProductPrice";
 
 @Index("fk_product_category_id", ["categoryId"], {})
-@Entity("product", { schema: "aplikacija" })
+@Entity("product")
 export class Product {
   @PrimaryGeneratedColumn({ type: "int", name: "product_id", unsigned: true })
   productId: number;
