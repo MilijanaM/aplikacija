@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { Photo } from "./photo.entity";
 import { Category } from "./category.entity";
-import { ProductPrice } from "./ProductPrice";
+import { ProductPrice } from "./product-price.entity";
 
 @Index("fk_product_category_id", ["categoryId"], {})
 @Entity("product")
