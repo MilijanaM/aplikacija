@@ -33,6 +33,9 @@ import { AdminController } from './controllers/api/admin.controller';
         Gallery,
         Inbox,
         Photo,
+
+
+        
         News,
         ProductPrice,
         Product

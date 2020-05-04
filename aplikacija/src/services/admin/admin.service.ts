@@ -4,6 +4,8 @@ import { Admin } from 'entities/admin.entity';
 import { Repository } from 'typeorm';
 import { AddAdminDto } from 'src/dtos/admin/add.admin.dto';
 import { EditAdminDto } from 'src/dtos/admin/edit.admin.dto';
+import { ApiResponse } from 'src/misc/api.response.class';
+import { resolve } from 'dns';
 
 
 
@@ -27,7 +29,7 @@ export class AdminService
     }
 
 
-add(data: AddAdminDto): Promise <Admin>{
+add(data: AddAdminDto): Promise <Admin | ApiResponse>{
     //DTO -> Model
     //username -> username
     //password -[]-> passwordHash stvar izbora! SHA512
@@ -36,18 +38,34 @@ add(data: AddAdminDto): Promise <Admin>{
    const passwordHash = crypto.createHash('sha512');
    passwordHash.update(data.password);
 
-   const passwordHashString = passwordHash.digest('hex').toUpperCase;
+   const passwordHashString = passwordHash.digest('hex').toUpperCase();
    
    let newAdmin: Admin = new Admin;
    newAdmin.username = data.username;
    newAdmin.passwordHash = passwordHashString;
 
-   return this.admin.save(newAdmin);
+   return new Promise((resolve) => {
+    
+    this.admin.save(newAdmin)
+    .then(data => resolve(data))
+    .catch(error=>{
+        const response: ApiResponse = new ApiResponse("error", -1001, null);
+        resolve(response);
+
+
+    });
+   });
 
 }
 
-async editById(id: number, data: EditAdminDto): Promise<Admin>{
+async editById(id: number, data: EditAdminDto): Promise<Admin | ApiResponse>{
     let admin: Admin= await this.admin.findOne(id);
+
+    if(admin=== undefined){
+        return new Promise((resolve)=> {
+            resolve(new ApiResponse("error", -1002, null));
+        });
+    }
     
 
     const crypto = require('crypto');
@@ -55,7 +73,7 @@ async editById(id: number, data: EditAdminDto): Promise<Admin>{
    const passwordHash = crypto.createHash('sha512');
    passwordHash.update(data.password);
 
-   const passwordHashString = passwordHash.digest('hex').toUpperCase;
+   const passwordHashString = passwordHash.digest('hex').toUpperCase();
    
     admin.passwordHash = passwordHashString;
     return this.admin.save(admin);
