@@ -13,6 +13,8 @@ import { Inbox } from 'entities/inbox.entity';
 import { News } from 'entities/news.entity';
 import { ProductPrice } from 'entities/product-price.entity';
 import { AdminController } from './controllers/api/admin.controller';
+import { CategoryController } from './controllers/api/category.controller';
+import { CategoryService } from './services/category/category.service';
 
 
 
@@ -43,9 +45,12 @@ import { AdminController } from './controllers/api/admin.controller';
       ]
     }),
 
-    TypeOrmModule.forFeature([Admin])
+    TypeOrmModule.forFeature([
+      Admin,
+      Category,
+    ])
   ],
-  controllers: [AppController, AdminController],
-  providers: [AppService, AdminService],
+  controllers: [AppController, AdminController, CategoryController,],
+  providers: [AppService, AdminService, CategoryService,],
 })
 export class AppModule {}
