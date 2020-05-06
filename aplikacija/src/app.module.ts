@@ -15,6 +15,8 @@ import { ProductPrice } from 'entities/product-price.entity';
 import { AdminController } from './controllers/api/admin.controller';
 import { CategoryController } from './controllers/api/category.controller';
 import { CategoryService } from './services/category/category.service';
+import { ProductService } from './controllers/api/product/product.service';
+import { ProductController } from './controllers/api/product.controller';
 
 
 
@@ -48,9 +50,11 @@ import { CategoryService } from './services/category/category.service';
     TypeOrmModule.forFeature([
       Admin,
       Category,
+      Product,
+      ProductPrice,
     ])
   ],
-  controllers: [AppController, AdminController, CategoryController,],
-  providers: [AppService, AdminService, CategoryService,],
+  controllers: [AppController, AdminController, CategoryController,ProductController,],
+  providers: [AppService, AdminService, CategoryService,ProductService,],
 })
 export class AppModule {}

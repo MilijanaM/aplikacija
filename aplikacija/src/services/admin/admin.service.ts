@@ -6,6 +6,7 @@ import { AddAdminDto } from 'src/dtos/admin/add.admin.dto';
 import { EditAdminDto } from 'src/dtos/admin/edit.admin.dto';
 import { ApiResponse } from 'src/misc/api.response.class';
 import { resolve } from 'dns';
+import * as crypto from 'crypto';
 
 
 

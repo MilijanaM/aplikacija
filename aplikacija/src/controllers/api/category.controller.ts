@@ -10,14 +10,28 @@ import { CategoryService } from "src/services/category/category.service";
     },
     params: {
         id:{
-            field: 'id',
+            field: 'categoryId',
             type: 'number',
             primary: true
+        }
+    },
+    query: {
+        join: {
+            categories: {
+                eager: true
+            },
+            parentCategory: {
+                eager: false
+            },
+            products: {
+                eager: true
+            },
+           
         }
     }
 
 })
 export class CategoryController{
      constructor(public service: CategoryService){ }
-     
+
 }
