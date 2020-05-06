@@ -17,6 +17,16 @@ import { CategoryController } from './controllers/api/category.controller';
 import { CategoryService } from './services/category/category.service';
 import { ProductService } from './controllers/api/product/product.service';
 import { ProductController } from './controllers/api/product.controller';
+import { GalleryService } from './services/gallery/gallery.service';
+import { GalleryController } from './controllers/api/product/gallery.controller';
+import { InboxController } from './controllers/api/inbox.controller';
+import { InboxService } from './services/inbox/inbox.service';
+import { NewsController } from './controllers/api/news.controller';
+import { NewsService } from './services/news/news.service';
+import { PhotoController } from './controllers/api/photo.controllers';
+import { PhotoService } from './services/photo/photo.service';
+import { ProductPriceController } from './controllers/api/productPrice.controller';
+import { ProductPriceService } from './services/productPrice/productPrice.service';
 
 
 
@@ -52,9 +62,15 @@ import { ProductController } from './controllers/api/product.controller';
       Category,
       Product,
       ProductPrice,
+      Gallery,
+      Inbox,
+      News,
+      Photo,
+      ProductPrice
+
     ])
   ],
-  controllers: [AppController, AdminController, CategoryController,ProductController,],
-  providers: [AppService, AdminService, CategoryService,ProductService,],
+  controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController ],
+  providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService ],
 })
 export class AppModule {}
