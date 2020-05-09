@@ -27,6 +27,7 @@ import { PhotoController } from './controllers/api/photo.controllers';
 import { PhotoService } from './services/photo/photo.service';
 import { ProductPriceController } from './controllers/api/productPrice.controller';
 import { ProductPriceService } from './services/productPrice/productPrice.service';
+import { AuthController } from './controllers/api/auth.controller';
 
 
 
@@ -70,7 +71,7 @@ import { ProductPriceService } from './services/productPrice/productPrice.servic
 
     ])
   ],
-  controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController ],
+  controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController, AuthController, ],
   providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService ],
 })
 export class AppModule {}
