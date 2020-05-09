@@ -28,6 +28,8 @@ import { PhotoService } from './services/photo/photo.service';
 import { ProductPriceController } from './controllers/api/productPrice.controller';
 import { ProductPriceService } from './services/productPrice/productPrice.service';
 import { AuthController } from './controllers/api/auth.controller';
+import { Category2Controller } from './controllers/api/category2.controller';
+import { Category2Service } from './services/category2/category2.service';
 
 
 
@@ -71,7 +73,7 @@ import { AuthController } from './controllers/api/auth.controller';
 
     ])
   ],
-  controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController, AuthController, ],
-  providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService ],
+  controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController, AuthController, Category2Controller ],
+  providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService,Category2Service, ],
 })
 export class AppModule {}

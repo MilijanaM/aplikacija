@@ -16,7 +16,7 @@ export class AppController {
   @Get() // http:localhost:3000/
   getIndex(): string{
 
-    return 'Home page!!';
+    return 'Home page1.0!!';
   }
 
 
