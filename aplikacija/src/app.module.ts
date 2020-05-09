@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module , NestModule, MiddlewareConsumer} from '@nestjs/common';
 import { AppController } from './controllers/app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
@@ -28,6 +28,7 @@ import { PhotoService } from './services/photo/photo.service';
 import { ProductPriceController } from './controllers/api/productPrice.controller';
 import { ProductPriceService } from './services/productPrice/productPrice.service';
 import { AuthController } from './controllers/api/auth.controller';
+import { AuthMiddleware } from './middlewares/auth.middlewares';
 
 
 
@@ -73,5 +74,18 @@ import { AuthController } from './controllers/api/auth.controller';
   ],
   controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController, AuthController ],
   providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService, ],
+
+  exports: [
+    AdminService,
+  ],
+
 })
-export class AppModule {}
+
+export class AppModule implements NestModule {
+  configure(consumer:MiddlewareConsumer) {
+    consumer
+    .apply(AuthMiddleware)
+    .exclude('auth/*')
+    .forRoutes('api/*');
+  }
+}
