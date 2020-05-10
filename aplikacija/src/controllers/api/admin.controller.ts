@@ -2,7 +2,7 @@
 
 import { Controller, Get, Param, Post, Body, Put } from "@nestjs/common";
 import { AdminService } from "src/services/admin/admin.service";
-import { Admin } from "entities/admin.entity";
+import { Admin } from "src/controllers/api/entities/admin.entity";
 import { EditAdminDto } from "src/dtos/admin/edit.admin.dto";
 import { DatabaseConfiguration } from "config/database.configuration";
 import { AddAdminDto } from "src/dtos/admin/add.admin.dto";

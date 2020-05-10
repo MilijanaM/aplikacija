@@ -64,7 +64,7 @@ export class AuthController{
         jwtData.ua = req.headers["user-agent"];
 
 
-        let token: string = jwt.sign(jwtData.toPlainObject(),jwtSecret);//GENERISATI!!!
+        let token: string = jwt.sign(jwtData.toPlainObject(),jwtSecret);
 
         const responseObject = new LoginInfoAdminDto(
             admin.adminId,

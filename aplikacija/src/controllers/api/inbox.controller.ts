@@ -1,6 +1,6 @@
 import { Controller } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
-import { Inbox } from "entities/inbox.entity";
+import { Inbox } from "src/controllers/api/entities/inbox.entity";
 import { InboxService } from "src/services/inbox/inbox.service";
 
 @Controller('api/inbox')

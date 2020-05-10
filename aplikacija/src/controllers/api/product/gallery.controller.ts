@@ -1,6 +1,6 @@
 import { Controller } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
-import { Gallery } from "entities/gallery.entity";
+import { Gallery } from "src/controllers/api/entities/gallery.entity";
 import { GalleryService } from "src/services/gallery/gallery.service";
 
 @Controller('api/gallery')

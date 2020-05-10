@@ -1,7 +1,7 @@
 import { Controller } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
 import { NewsService } from "src/services/news/news.service";
-import { News } from "entities/news.entity";
+import { News } from "src/controllers/api/entities/news.entity";
 
 @Controller('api/news')
 @Crud({
