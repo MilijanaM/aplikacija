@@ -1,4 +1,4 @@
-import { NestMiddleware, HttpStatus, HttpException, Injectable } from "@nestjs/common";
+import { NestMiddleware, HttpStatus, HttpException, Injectable, Header } from "@nestjs/common";
 import { Request, NextFunction } from "express";
 import { AdminService } from "src/services/admin/admin.service";
 import * as jwt from 'jsonwebtoken';
@@ -19,14 +19,14 @@ export class AuthMiddleware implements NestMiddleware{
 
         const token = req.headers.authorization;
 
-        const tokenParts = token.split('');
+        const tokenParts = token.split(' ');
         if(tokenParts.length != 2){
             throw new HttpException('Bad token found', HttpStatus.UNAUTHORIZED);
         
         }
 
         const tokenString = tokenParts[1];
-
+       
         const jwtData: JwtDataAdminDto = jwt.verify(tokenString, jwtSecret);
 
         if(!jwtData){
@@ -51,14 +51,8 @@ export class AuthMiddleware implements NestMiddleware{
 
         }
 
-        let sada = new Date();
-        const trenutniTimestamp = new Date().getTime()/1000;
-
-        if(trenutniTimestamp >= jwtData.exp){
-            throw new HttpException('The token has expired', HttpStatus.UNAUTHORIZED);
-        }
-   
-        next();
-    }
+                     
+         next();
+   }
 
 }
