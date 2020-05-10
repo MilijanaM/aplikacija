@@ -1,4 +1,4 @@
-import { Controller, Post, Param, UseInterceptors, UploadedFile } from "@nestjs/common";
+import { Controller, Post, Param, UseInterceptors, UploadedFile, Req } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
 import { Product } from "entities/product.entity";
 import { ProductService } from "./product/product.service";
@@ -90,12 +90,14 @@ export class ProductController{
         }),
         fileFilter: (req, file, callback)=> {
             if(!file.originalname.toLowerCase().match(/\.(jpg|png)$/)){
-                callback(new Error('Bad file extensions!'), false);
+                req.fileFilterError= 'Bad file extension!';
+                callback(null, false);
                 return;
             }
 
             if(!(file.mimetype.includes('jpeg')|| file.mimetype.includes('png'))){
-                callback(new Error('Bad file content!'), false);
+                req.fileFilterError= 'Bad file content!';
+                callback(null, false);
                 return;
             }
             callback(null, true);
@@ -103,20 +105,34 @@ export class ProductController{
         limits:{
         
             files:1,
-            fieldSize: StorageConfig.photoMaxFileSize,
+            fileSize: StorageConfig.photoMaxFileSize,
 
 
         }
     })
 )
-async uploadPhoto(@Param('id') productId: number, @UploadedFile() photo ): Promise<ApiResponse | Photo>{
+async uploadPhoto
+   (@Param('id') productId: number,
+    @UploadedFile() photo,
+    @Req() req 
+     ): Promise<ApiResponse | Photo>{
+         if(req.fileFilterError){
+             return new ApiResponse('error', -4002, req.fileFilterError);
+         }
+
+         if (!photo){
+            return new ApiResponse('error', -4002, 'File not uploaded!');
+         }
+
+         //TODO: Real Mime type check
+
+         //TODO: Save a resized file
   
    const newPhoto: Photo = new Photo();
    newPhoto.productId = productId;
    newPhoto.imagePath = photo.filename;
 
    const savedPhoto = await this.photoService.add(newPhoto);
-
    if(!savedPhoto){
        return new ApiResponse('error', -4001, 'File upload failed');
 
