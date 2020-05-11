@@ -33,6 +33,7 @@ import { AuthMiddleware } from './middlewares/auth.middlewares';
 
 
 
+
 @Module({
   imports: [
 
@@ -73,7 +74,7 @@ import { AuthMiddleware } from './middlewares/auth.middlewares';
     ])
   ],
   controllers: [AppController, AdminController, CategoryController,ProductController,GalleryController,InboxController, NewsController,PhotoController,ProductPriceController, AuthController ],
-  providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService, ],
+  providers: [AppService, AdminService, CategoryService,ProductService,GalleryService,InboxService,NewsService,PhotoService,ProductPriceService ],
 
   exports: [
     AdminService,
