@@ -20,6 +20,13 @@ import { InboxService } from "src/services/inbox/inbox.service";
            
            
         }
+    
+    },
+    routes: {
+        exclude: [
+            'updateOneBase',
+            'deleteOneBase',
+    ],
     }
 
 })

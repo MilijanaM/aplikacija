@@ -127,50 +127,41 @@ async uploadPhoto
     @UploadedFile() photo,
     @Req() req 
      ): Promise<ApiResponse | Photo>{
-         if(req.fileFilterError){
-             return new ApiResponse('error', -4002, req.fileFilterError);
-         }
+        if(req.fileFilterError){
+            return new ApiResponse('error', -4002, req.fileFilterError);
+        }
 
-         if (!photo){
+        if (!photo){
             return new ApiResponse('error', -4002, 'File not uploaded!');
-         }
+        }
 
-         const fileTypeResult=fileType.fromFile(photo.path);
-         if(!fileTypeResult){
-
-           fs.unlinkSync(photo.path);
-           return new ApiResponse('error', -4002, 'Can not detect file type!');
-
-         }
-         const realMimeType = (await fileTypeResult).mime;
-         if(!(realMimeType.includes('jpeg')|| realMimeType.includes('png'))){
+        const fileTypeResult=fileType.fromFile(photo.path);
+        if(!fileTypeResult){
+            fs.unlinkSync(photo.path);
+            return new ApiResponse('error', -4002, 'Can not detect file type!');
+        }
+        const realMimeType = (await fileTypeResult).mime;
+        if(!(realMimeType.includes('jpeg')|| realMimeType.includes('png'))){
             fs.unlinkSync(photo.path);
             return new ApiResponse('error', -4002, 'Can not Bad file content type!');
+        }
+
+        //TODO: Save a resized file
+        await this.createResizedImage(photo, StorageConfig.photo.resize.thumb);
+        await this.createResizedImage(photo, StorageConfig.photo.resize.small);
+
+        const newPhoto: Photo = new Photo();
+        newPhoto.productId = productId;
+        newPhoto.imagePath = photo.filename;
+
+        const savedPhoto = await this.photoService.add(newPhoto);
+        if(!savedPhoto){
+            return new ApiResponse('error', -4001, 'File upload failed');
+        }
+        return savedPhoto;
+    }
 
 
-        
-
-         //TODO: Save a resized file
-         await this.createResizedImage(photo, StorageConfig.photo.resize.thumb);
-         await this.createResizedImage(photo, StorageConfig.photo.resize.small);
-
-
-  
-   const newPhoto: Photo = new Photo();
-   newPhoto.productId = productId;
-   newPhoto.imagePath = photo.filename;
-
-   const savedPhoto = await this.photoService.add(newPhoto);
-   if(!savedPhoto){
-       return new ApiResponse('error', -4001, 'File upload failed');
-
-   }
-   return savedPhoto;
-}
-
- }
- 
- 
 async createResizedImage(photo, resizeSettings){
     const originalFilePath = photo.path;
     const fileName = photo.filename;
@@ -219,13 +210,11 @@ public async deletePhoto(
     }
 
     return new ApiResponse('ok', 0, 'One photo deleted!');
-
-
 }
+
 @Patch(':id') //http://localhost:3000/api/product/2
     async editById(@Param('id') id: number, @Body() data: EditProductDto) {
         console.log('Body from rq'+ data.name);
         return await this.service.editProduct(id, data);
     }
-
 }

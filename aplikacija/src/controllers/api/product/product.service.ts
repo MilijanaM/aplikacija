@@ -11,7 +11,7 @@ import { EditProductDto } from "src/dtos/product/edit.product.dto";
 @Injectable()
 export class ProductService extends TypeOrmCrudService<Product>{
    
-   async editProduct(id: number, data: EditProductDto) {
+   async editProduct(id: number, data: EditProductDto): Promise<Product | ApiResponse> {
         
         console.log("Fetching product");
 
@@ -65,7 +65,14 @@ export class ProductService extends TypeOrmCrudService<Product>{
 
         console.log("editing product done");
 
-        //ret
+      
+        return await this.productRepository.findOne(id, {
+            relations: [
+              "category",
+              "productPrices",
+              "photos"
+            ]
+          })
     }
 
     constructor(
