@@ -1,4 +1,4 @@
-import { Controller, Post, Param, UseInterceptors, UploadedFile, Req, Delete } from "@nestjs/common";
+import { Controller, Post, Param, UseInterceptors, UploadedFile, Req, Delete, Body, Patch } from "@nestjs/common";
 import { Crud } from "@nestjsx/crud";
 import { Product } from "src/controllers/api/entities/product.entity";
 import { ProductService } from "./product/product.service";
@@ -12,6 +12,7 @@ import { ApiResponse } from "src/misc/api.response.class";
 import * as fileType from 'file-type';
 import * as fs from 'fs';
 import * as sharp from 'sharp';
+import { EditProductDto } from "src/dtos/product/edit.product.dto";
 
 @Controller('api/product')
 @Crud({
@@ -41,6 +42,13 @@ import * as sharp from 'sharp';
            
            
         }
+    },
+    routes: {
+        exclude: [
+            'updateOneBase',
+            'replaceOneBase',
+            'deleteOneBase',
+    ],
     }
 
 })
@@ -214,6 +222,10 @@ public async deletePhoto(
 
 
 }
-
+@Patch(':id') //http://localhost:3000/api/product/2
+    async editById(@Param('id') id: number, @Body() data: EditProductDto) {
+        console.log('Body from rq'+ data.name);
+        return await this.service.editProduct(id, data);
+    }
 
 }
