@@ -11,6 +11,34 @@ import { EditProductDto } from "src/dtos/product/edit.product.dto";
 @Injectable()
 export class ProductService extends TypeOrmCrudService<Product>{
    
+
+   async createProduct(data: AddProductDto): Promise <Product | ApiResponse>{
+    console.log('a');
+    let newProduct: Product = new Product();
+     newProduct.name= data.name;
+     newProduct.categoryId=data.categoryId;
+     newProduct.description=data.description;
+    
+     let savedProduct = await this.productRepository.save(newProduct);
+     console.log('b');
+     let newProductPrice: ProductPrice = new ProductPrice();
+
+     newProductPrice.productId= savedProduct.productId;
+     newProductPrice.price = data.price;
+
+     await this.productPriceRepository.save(newProductPrice);
+      console.log('c');
+     return await this.productRepository.findOne(savedProduct.productId,{
+       relations:[
+        "category",
+        "productPrices",
+        "photos"
+      ]
+      
+     });
+
+   }
+
    async editProduct(id: number, data: EditProductDto): Promise<Product | ApiResponse> {
         
         console.log("Fetching product");

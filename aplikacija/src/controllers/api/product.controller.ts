@@ -13,6 +13,7 @@ import * as fileType from 'file-type';
 import * as fs from 'fs';
 import * as sharp from 'sharp';
 import { EditProductDto } from "src/dtos/product/edit.product.dto";
+import { AddProductDto } from "src/dtos/product/add.product.dto";
 
 @Controller('api/product')
 @Crud({
@@ -61,8 +62,15 @@ export class ProductController{
         
     }
 
+
+    @Post('create')//POST http://localhost:3000/api/product/create/
+    createProduct(@Body() data: AddProductDto) {
+        console.log('A');
+        return this.service.createProduct(data);
+    }
+
     
-@Post(':id/uploadPhoto/')//POST http://localhost:3000/api/product/uploadPhoto
+@Post(':id/uploadPhoto/')//POST http://localhost:3000/api/product/id/uploadPhoto
 @UseInterceptors(
     FileInterceptor('photo',{
         storage: diskStorage({
