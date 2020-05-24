@@ -69,8 +69,10 @@ export class ProductController{
         return this.service.createProduct(data);
     }
 
-    
+  
+
 @Post(':id/uploadPhoto/')//POST http://localhost:3000/api/product/id/uploadPhoto
+
 @UseInterceptors(
     FileInterceptor('photo',{
         storage: diskStorage({
@@ -78,7 +80,7 @@ export class ProductController{
             filename: (req, file, callback)=>{
                 // 'Neka slika.jpg'->
                 // '20200420-1234567898-Neka-slika.jpg'
-
+                console.log('CD');
                 let original : string= file.originalname;
 
                 let normalized = original.replace(/\s+/g, '-');
@@ -102,12 +104,14 @@ export class ProductController{
 
                 callback(null, fileName);
                 
-
+               console.log('EF');
 
 
             }
         }),
         fileFilter: (req, file, callback)=> {
+
+            console.log('G');
             if(!file.originalname.toLowerCase().match(/\.(jpg|png)$/)){
                 req.fileFilterError= 'Bad file extension!';
                 callback(null, false);
@@ -115,6 +119,7 @@ export class ProductController{
             }
 
             if(!(file.mimetype.includes('jpeg')|| file.mimetype.includes('png'))){
+                console.log('H');
                 req.fileFilterError= 'Bad file content!';
                 callback(null, false);
                 return;
@@ -135,46 +140,70 @@ async uploadPhoto
     @UploadedFile() photo,
     @Req() req 
      ): Promise<ApiResponse | Photo>{
+         console.log('J');
         if(req.fileFilterError){
             return new ApiResponse('error', -4002, req.fileFilterError);
         }
 
         if (!photo){
+            console.log('K');
             return new ApiResponse('error', -4002, 'File not uploaded!');
         }
 
+        console.log('1');
         const fileTypeResult=fileType.fromFile(photo.path);
         if(!fileTypeResult){
+            console.log('L');
             fs.unlinkSync(photo.path);
             return new ApiResponse('error', -4002, 'Can not detect file type!');
         }
+        console.log('2');
         const realMimeType = (await fileTypeResult).mime;
         if(!(realMimeType.includes('jpeg')|| realMimeType.includes('png'))){
+            console.log('M');
             fs.unlinkSync(photo.path);
             return new ApiResponse('error', -4002, 'Can not Bad file content type!');
         }
 
+        console.log('3');
         //TODO: Save a resized file
         await this.createResizedImage(photo, StorageConfig.photo.resize.thumb);
+        console.log('4');
         await this.createResizedImage(photo, StorageConfig.photo.resize.small);
 
+        console.log('N');
         const newPhoto: Photo = new Photo();
         newPhoto.productId = productId;
         newPhoto.imagePath = photo.filename;
 
+        console.log('O');
         const savedPhoto = await this.photoService.add(newPhoto);
         if(!savedPhoto){
             return new ApiResponse('error', -4001, 'File upload failed');
         }
         return savedPhoto;
+        console.log('P');
     }
 
 
 async createResizedImage(photo, resizeSettings){
+    console.log('5');
     const originalFilePath = photo.path;
-    const fileName = photo.filename;
+    console.log('6');
 
-    const destinationFilePath = StorageConfig.photo.destination+StorageConfig.photo.resize.small.directory+ fileName;
+    const fileName = photo.filename;
+    console.log('7');
+
+    const destinationFilePath = StorageConfig.photo.destination + '/'+ StorageConfig.photo.resize.small.directory + fileName;
+    console.log('8');
+    console.log('StorageConfig.photo.destination=' +StorageConfig.photo.destination);
+    console.log('StorageConfig.photo.destination=' +StorageConfig.photo.destination);
+
+    console.log('originalFilePath '+originalFilePath);
+    console.log('resizeSettings.width'+resizeSettings.width);
+    console.log('resizeSettings.height'+resizeSettings.height);
+    console.log('StorageConfig.photo.resize.small.directory'+StorageConfig.photo.resize.small.directory);
+    console.log('destinationFilePath='+ destinationFilePath);
 
     await sharp(originalFilePath)
        .resize ({
@@ -184,6 +213,8 @@ async createResizedImage(photo, resizeSettings){
           
        })
        .toFile(destinationFilePath);
+
+       console.log('9');
 
 
 }

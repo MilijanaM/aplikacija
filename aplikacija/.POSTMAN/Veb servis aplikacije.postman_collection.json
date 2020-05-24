@@ -1115,6 +1115,67 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"username\": \"admin\",\n    \"passwordHash\": \"7FCF4BA391C48784EDDE599889D6E3F1E47A27DB36ECC050CC92F259BFAC38AFAD2C68A1AE804D77075E8FB722503F3ECA2B2C1006EE6F6C7B7628CB45FFFD1D\",\n    \"adminId\": 5\n}"
+						},
+						{
+							"name": "add new admin ",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"username\": \"admin6\",\n\"password\": \"admin123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/admin/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b4-pVnb2M3zI1W+vkrZIPbfSn5riqY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 16:39:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"admin6\",\n    \"passwordHash\": \"7FCF4BA391C48784EDDE599889D6E3F1E47A27DB36ECC050CC92F259BFAC38AFAD2C68A1AE804D77075E8FB722503F3ECA2B2C1006EE6F6C7B7628CB45FFFD1D\",\n    \"adminId\": 11\n}"
 						}
 					]
 				}
@@ -1124,7 +1185,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MDM0NTYyOC4yMjksImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1ODkxMzYwMjh9.UYvxBeQ-xaC-wHcdsJGwIUtrdHhMNboWiqm31zmCBGQ",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
 						"type": "string"
 					}
 				]
@@ -1265,6 +1326,298 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Edit product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Marmelada\",\n  \"categoryId\": \"3\",\n  \"description\": \"neka marmelada\",\n  \"price\": \"201.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/product/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit product",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Marmelada\",\n  \"categoryId\": \"3\",\n  \"description\": \"neka marmelada\",\n  \"price\": \"201.00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/product/2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 May 2020 21:16:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Edit product",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Marmelada\",\n  \"categoryId\": \"3\",\n  \"description\": \"neka marmelada\",\n  \"price\": \"201.00\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/product/2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1387"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56b-aGSVsMzEcuaH8QW8+kGd+QwYksY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 15:35:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productId\": 2,\n    \"name\": \"Marmelada\",\n    \"description\": \"neka marmelada\",\n    \"categoryId\": 3,\n    \"category\": {\n        \"categoryId\": 3,\n        \"name\": \"Mleko\",\n        \"imagePath\": \"assets/mleko.jpg\",\n        \"parentCategoryId\": 5\n    },\n    \"productPrices\": [\n        {\n            \"productPriceId\": 1,\n            \"price\": \"100.00\",\n            \"createdAt\": \"2020-05-22T17:22:13.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 4,\n            \"price\": \"250.00\",\n            \"createdAt\": \"2020-05-22T17:25:00.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 6,\n            \"price\": \"1000000.00\",\n            \"createdAt\": \"2020-05-22T18:36:14.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 9,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:04:27.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 10,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:10:08.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 11,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:10:33.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 12,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:15:23.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 13,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:19:43.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 14,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:19:52.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 15,\n            \"price\": \"0.00\",\n            \"createdAt\": \"2020-05-22T20:21:53.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 16,\n            \"price\": \"201.00\",\n            \"createdAt\": \"2020-05-22T20:27:58.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 17,\n            \"price\": \"201.00\",\n            \"createdAt\": \"2020-05-22T20:28:58.000Z\",\n            \"productId\": 2\n        },\n        {\n            \"productPriceId\": 18,\n            \"price\": \"201.00\",\n            \"createdAt\": \"2020-05-22T21:02:47.000Z\",\n            \"productId\": 2\n        }\n    ],\n    \"photos\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a single product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get all products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/product/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1696"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6a0-Gxie/6Z2Qd76kex+GMXUN5zxOsM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 16:51:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productId\": 1,\n        \"name\": \"Jogurt\",\n        \"description\": \"mlecni\",\n        \"categoryId\": 5,\n        \"category\": {\n            \"categoryId\": 5,\n            \"name\": \"Mlecniproizvodi\",\n            \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n            \"parentCategoryId\": 1\n        },\n        \"photos\": [],\n        \"productPrices\": [\n            {\n                \"productPriceId\": 2,\n                \"price\": \"1000.00\",\n                \"createdAt\": \"2020-05-22T17:41:00.000Z\",\n                \"productId\": 1\n            }\n        ]\n    },\n    {\n        \"productId\": 2,\n        \"name\": \"Marmelada\",\n        \"description\": \"neka marmelada\",\n        \"categoryId\": 3,\n        \"category\": {\n            \"categoryId\": 3,\n            \"name\": \"Mleko\",\n            \"imagePath\": \"assets/mleko.jpg\",\n            \"parentCategoryId\": 5\n        },\n        \"photos\": [],\n        \"productPrices\": [\n            {\n                \"productPriceId\": 1,\n                \"price\": \"100.00\",\n                \"createdAt\": \"2020-05-22T17:22:13.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 4,\n                \"price\": \"250.00\",\n                \"createdAt\": \"2020-05-22T17:25:00.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 6,\n                \"price\": \"1000000.00\",\n                \"createdAt\": \"2020-05-22T18:36:14.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 9,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:04:27.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 10,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:10:08.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 11,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:10:33.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 12,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:15:23.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 13,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:19:43.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 14,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:19:52.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 15,\n                \"price\": \"0.00\",\n                \"createdAt\": \"2020-05-22T20:21:53.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 16,\n                \"price\": \"201.00\",\n                \"createdAt\": \"2020-05-22T20:27:58.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 17,\n                \"price\": \"201.00\",\n                \"createdAt\": \"2020-05-22T20:28:58.000Z\",\n                \"productId\": 2\n            },\n            {\n                \"productPriceId\": 18,\n                \"price\": \"201.00\",\n                \"createdAt\": \"2020-05-22T21:02:47.000Z\",\n                \"productId\": 2\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Create product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"name\": \"Proizvod 1\",\n\"categoryId\": \"1\",\n\"description\": \"neki opis\",\n\"price\": \"10.05\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/product/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "298"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12a-yiA4V+CM2QhqcKHlcMNGb3yaXgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 May 2020 11:32:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productId\": 14,\n    \"name\": \"Proizvod 1\",\n    \"description\": \"neki opis\",\n    \"categoryId\": 1,\n    \"category\": {\n        \"categoryId\": 1,\n        \"name\": \"Hrana\",\n        \"imagePath\": \"assets/hrana.jpeg\",\n        \"parentCategoryId\": null\n    },\n    \"productPrices\": [\n        {\n            \"productPriceId\": 19,\n            \"price\": \"10.05\",\n            \"createdAt\": \"2020-05-24T11:32:38.000Z\",\n            \"productId\": 14\n        }\n    ],\n    \"photos\": []\n}"
+						}
+					]
 				}
 			],
 			"auth": {
@@ -1292,6 +1645,770 @@
 					"listen": "test",
 					"script": {
 						"id": "2d6943a9-928f-480d-9cd7-929f28eb297f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Testing category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Testing category- dodavanje kategorije",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"asdf2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/category/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 17:11:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+						},
+						{
+							"name": "Testing category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4dd-pbaHdbas1HKCxueCllry7hc2DhE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 17:05:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"categoryId\": 1,\n        \"name\": \"Hrana\",\n        \"imagePath\": \"assets/hrana.jpeg\",\n        \"parentCategoryId\": null,\n        \"categories\": [\n            {\n                \"categoryId\": 5,\n                \"name\": \"Mlecniproizvodi\",\n                \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n                \"parentCategoryId\": 1\n            }\n        ],\n        \"products\": []\n    },\n    {\n        \"categoryId\": 3,\n        \"name\": \"Mleko\",\n        \"imagePath\": \"assets/mleko.jpg\",\n        \"parentCategoryId\": 5,\n        \"categories\": [],\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"name\": \"Marmelada\",\n                \"description\": \"neka marmelada\",\n                \"categoryId\": 3\n            }\n        ]\n    },\n    {\n        \"categoryId\": 4,\n        \"name\": \"Pavlaka\",\n        \"imagePath\": \"assets/pavlaka.jpg\",\n        \"parentCategoryId\": 5,\n        \"categories\": [],\n        \"products\": []\n    },\n    {\n        \"categoryId\": 5,\n        \"name\": \"Mlecniproizvodi\",\n        \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n        \"parentCategoryId\": 1,\n        \"categories\": [\n            {\n                \"categoryId\": 3,\n                \"name\": \"Mleko\",\n                \"imagePath\": \"assets/mleko.jpg\",\n                \"parentCategoryId\": 5\n            },\n            {\n                \"categoryId\": 4,\n                \"name\": \"Pavlaka\",\n                \"imagePath\": \"assets/pavlaka.jpg\",\n                \"parentCategoryId\": 5\n            }\n        ],\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"name\": \"Jogurt\",\n                \"description\": \"mlecni\",\n                \"categoryId\": 5\n            }\n        ]\n    },\n    {\n        \"categoryId\": 6,\n        \"name\": \"Hemija \",\n        \"imagePath\": \"assets/hemija.jpg\",\n        \"parentCategoryId\": null,\n        \"categories\": [\n            {\n                \"categoryId\": 7,\n                \"name\": \"Detrdzenti\",\n                \"imagePath\": \"assets/detrdzenti.jpg\",\n                \"parentCategoryId\": 6\n            }\n        ],\n        \"products\": []\n    },\n    {\n        \"categoryId\": 7,\n        \"name\": \"Detrdzenti\",\n        \"imagePath\": \"assets/detrdzenti.jpg\",\n        \"parentCategoryId\": 6,\n        \"categories\": [],\n        \"products\": []\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "dc8781bc-c152-452d-ad9b-6d7653618af0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "84f1ba97-59cf-44a6-a7e1-3d170e4efcb6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ProductPrice",
+			"item": [
+				{
+					"name": "Get all product price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get all product price- neuspesno",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/productPrice/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productPrice",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-E+MIh2yEFW6ec1OQ9IWydCBCwfs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 17:32:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Empty data. Nothing to save.\",\n    \"error\": \"Bad Request\"\n}"
+						},
+						{
+							"name": "Get all product price",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/productPrice",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productPrice"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1275"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4fb-fFemME4NqYqD6aJkurB5n7SOryU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 18:11:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productPriceId\": 1,\n        \"price\": \"100.00\",\n        \"createdAt\": \"2020-05-22T17:22:13.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 2,\n        \"price\": \"1000.00\",\n        \"createdAt\": \"2020-05-22T17:41:00.000Z\",\n        \"productId\": 1\n    },\n    {\n        \"productPriceId\": 4,\n        \"price\": \"250.00\",\n        \"createdAt\": \"2020-05-22T17:25:00.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 6,\n        \"price\": \"1000000.00\",\n        \"createdAt\": \"2020-05-22T18:36:14.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 9,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:04:27.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 10,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:10:08.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 11,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:10:33.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 12,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:15:23.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 13,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:19:43.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 14,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:19:52.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 15,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:21:53.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 16,\n        \"price\": \"201.00\",\n        \"createdAt\": \"2020-05-22T20:27:58.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 17,\n        \"price\": \"201.00\",\n        \"createdAt\": \"2020-05-22T20:28:58.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 18,\n        \"price\": \"201.00\",\n        \"createdAt\": \"2020-05-22T21:02:47.000Z\",\n        \"productId\": 2\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ce2d38c5-4bcc-4c52-9d3c-bb92cff801ef",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "de587782-7ef0-447e-9b3b-0641da58c70f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "Get all news",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get all news",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/news/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"news",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "134"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"86-o/1db/BY7AjWTeR6Ipd4q11/1LU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 18:10:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"newsId\": 1,\n        \"caption\": 1,\n        \"text\": \"mleko moja kravica\",\n        \"picture\": \"C:\\\\Users\\\\Milijana\\\\Desktop\\\\Projekat\\\\storage\\\\photos\",\n        \"adminId\": 1\n    }\n]"
+						},
+						{
+							"name": "Get all news",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/news/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"news",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 17:36:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad6b6985-b0c4-473b-b23a-d3c924f42ece",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba4717fd-b21a-434f-947c-d19a6aa4bb8d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Photo",
+			"item": [
+				{
+					"name": "Get photos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get photos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/photo/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"photo",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f-OP4P0ly0TbLjzRlTDzTZ8P8CkDo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 17:46:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"photoId\": 2,\n        \"description\": \"Slika mleko\",\n        \"imagePath\": \"C:\\\\Users\\\\Milijana\\\\Desktop\\\\Projekat\\\\storage\\\\photos\",\n        \"productId\": 1\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1427b905-1b79-40bc-aa5a-57d559fd45d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "829fd353-0dbb-4fcc-85e1-589d4275bca4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Inbox",
+			"item": [
+				{
+					"name": "Get inbox",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get inbox",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/inbox",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"inbox"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "174"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ae-iS0XZ7GTiI+aAgmSPTII8d1wIso\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 18:08:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"inboxId\": 1,\n        \"name\": \"poruka1\",\n        \"mail\": \"neki tekst\",\n        \"message\": \"Neki malo duzi tekst\"\n    },\n    {\n        \"inboxId\": 2,\n        \"name\": \"poruka2\",\n        \"mail\": \"neka druga poruka\",\n        \"message\": \"Neki dugacak tekst\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "50bf2b49-36b7-44a5-9f4f-1b23d46b254a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7911013-bec9-4be4-b272-dc19a0d08490",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Gallery",
+			"item": [
+				{
+					"name": "Get gallery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Get gallery",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/gallery",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"gallery"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-0IGWPj1/82QBhSfcn9HrgEP9+m4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 May 2020 18:07:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"galleryId\": 1,\n        \"imagePath\": \"C:\\\\Users\\\\Milijana\\\\Desktop\\\\Projekat\\\\storage\\\\photos\",\n        \"description\": \"Slika mleka\",\n        \"isVisible\": {\n            \"type\": \"Buffer\",\n            \"data\": [\n                1\n            ]\n        }\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d6b1db12-2bc7-40e4-bb55-ffac762fb8a6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab7927cb-48a1-45b1-bf1b-b3447e538e7b",
 						"type": "text/javascript",
 						"exec": [
 							""
