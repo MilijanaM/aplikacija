@@ -219,14 +219,14 @@ async createResizedImage(photo, resizeSettings){
 
 }
 
-//http:localhost:3000/api/article/1/deletePhoto/45/
-@Delete(':artcleId/deletePhoto/:photoId')
+//http:localhost:3000/api/product/1/deletePhoto/45/
+@Delete(':productId/deletePhoto/:photoId')
 public async deletePhoto(
-    @Param('articleId') articleId: number,
+    @Param('productId') productId: number,
     @Param('photoId') photoId: number,
 ){
     const photo = await this. photoService.findOne({
-        productId: articleId,
+        productId: productId,
         photoId: photoId
     });
 
