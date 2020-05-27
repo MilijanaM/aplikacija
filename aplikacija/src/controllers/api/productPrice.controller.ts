@@ -11,7 +11,7 @@ import { ProductPrice } from "src/controllers/api/entities/product-price.entity"
     },
     params: {
         id:{
-            field: 'productPriceId',
+            field: 'product_price_id',
             type: 'number',
             primary: true
         }

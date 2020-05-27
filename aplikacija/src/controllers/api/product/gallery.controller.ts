@@ -10,7 +10,7 @@ import { GalleryService } from "src/services/gallery/gallery.service";
     },
     params: {
         id:{
-            field: 'galleryId',
+            field: 'gallery_id',
             type: 'number',
             primary: true
         }

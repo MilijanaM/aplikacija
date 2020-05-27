@@ -10,7 +10,7 @@ import { InboxService } from "src/services/inbox/inbox.service";
     },
     params: {
         id:{
-            field: 'inboxId',
+            field: 'inbox_id',
             type: 'number',
             primary: true
         }

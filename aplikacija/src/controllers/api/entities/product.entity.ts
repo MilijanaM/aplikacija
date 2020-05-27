@@ -14,7 +14,8 @@ import { ProductPrice } from "./product-price.entity";
 @Index("fk_product_category_id", ["categoryId"], {})
 @Entity("product")
 export class Product {
-  @PrimaryGeneratedColumn({ type: "int", name: "product_id", unsigned: true })
+  @PrimaryGeneratedColumn({ type: "int", name: "product_id", unsigned: true 
+})
   productId: number;
 
   @Column("varchar", { name: "name", length: 50, default: () => "'0'" })

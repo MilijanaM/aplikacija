@@ -10,7 +10,7 @@ import { PhotoService } from "src/services/photo/photo.service";
     },
     params: {
         id:{
-            field: 'photoId',
+            field: 'photo_id',
             type: 'number',
             primary: true
         }

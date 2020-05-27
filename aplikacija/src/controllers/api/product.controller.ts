@@ -22,7 +22,7 @@ import { AddProductDto } from "src/dtos/product/add.product.dto";
     },
     params: {
         id:{
-            field: 'productId',
+            field: 'product_id',
             type: 'number',
             primary: true
         }
@@ -221,7 +221,7 @@ async createResizedImage(photo, resizeSettings){
 
 //http:localhost:3000/api/product/1/deletePhoto/45/
 @Delete(':productId/deletePhoto/:photoId')
-public async deletePhoto(
+async deletePhoto(
     @Param('productId') productId: number,
     @Param('photoId') photoId: number,
 ){

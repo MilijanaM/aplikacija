@@ -10,7 +10,7 @@ import { News } from "src/controllers/api/entities/news.entity";
     },
     params: {
         id:{
-            field: 'newsId',
+            field: 'news_id',
             type: 'number',
             primary: true
         }
