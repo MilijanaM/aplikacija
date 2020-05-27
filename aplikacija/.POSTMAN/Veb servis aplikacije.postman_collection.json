@@ -1185,7 +1185,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTQ1NzcxMi4zNDYsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTAyNDgxMTJ9.67Z6pVC0g5GqaEj3b-EWVH1Iq30hPH9nLt6Sb9dSo48",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTY0Nzk2MC41NDcsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTA0MzgzNjB9.Dc3fbLoqveybjXvDWdzNKQ2K9TrKJqbCqs8GpiqU1NY",
 						"type": "string"
 					}
 				]
@@ -1325,7 +1325,71 @@
 							"raw": ""
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Upload product photo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/C:/Users/Milijana/Desktop/Projekat/storage/photos/slika-mleko.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/product/2/uploadPhoto/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										"2",
+										"uploadPhoto",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-BnApdl3WEu8tWQct8gPiXyik7aM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 May 2020 15:03:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productId\": 2,\n    \"imagePath\": \"2020524-7537411282-slika-mleko.jpg\",\n    \"photoId\": 3,\n    \"description\": \"0\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Edit product",
@@ -1482,7 +1546,63 @@
 							"raw": ""
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Add a single product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/product/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "306"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"132-kz3Vm3EzayBRUG6oZ4iAr4FLt5k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:07:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productId\": 1,\n    \"name\": \"Jogurt\",\n    \"description\": \"mlecni\",\n    \"categoryId\": 5,\n    \"category\": {\n        \"categoryId\": 5,\n        \"name\": \"Mlecniproizvodi\",\n        \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n        \"parentCategoryId\": 1\n    },\n    \"photos\": [],\n    \"productPrices\": [\n        {\n            \"productPriceId\": 2,\n            \"price\": \"1000.00\",\n            \"createdAt\": \"2020-05-22T17:41:00.000Z\",\n            \"productId\": 1\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Get all products",
@@ -1618,6 +1738,71 @@
 							"body": "{\n    \"productId\": 14,\n    \"name\": \"Proizvod 1\",\n    \"description\": \"neki opis\",\n    \"categoryId\": 1,\n    \"category\": {\n        \"categoryId\": 1,\n        \"name\": \"Hrana\",\n        \"imagePath\": \"assets/hrana.jpeg\",\n        \"parentCategoryId\": null\n    },\n    \"productPrices\": [\n        {\n            \"productPriceId\": 19,\n            \"price\": \"10.05\",\n            \"createdAt\": \"2020-05-24T11:32:38.000Z\",\n            \"productId\": 14\n        }\n    ],\n    \"photos\": []\n}"
 						}
 					]
+				},
+				{
+					"name": "Delete product photo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Delete product photo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/product/1/deletePhoto/2\n",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"product",
+										"1",
+										"deletePhoto",
+										"2\n"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-Q26RqCz+c6/EysRdjQ0jCBs+2c4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 May 2020 20:31:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"errorCode\": 0,\n    \"message\": \"One photo deleted!\"\n}"
+						}
+					]
 				}
 			],
 			"auth": {
@@ -1625,7 +1810,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MDM0NTYyOC4yMjksImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1ODkxMzYwMjh9.UYvxBeQ-xaC-wHcdsJGwIUtrdHhMNboWiqm31zmCBGQ",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjo4LCJ1c2VybmFtZSI6ImFkbWluNSIsImV4cCI6MTU5MTY0Nzk2MC41NDcsImlwIjoiOjoxIiwidWEiOiJQb3N0bWFuUnVudGltZS83LjI0LjEiLCJpYXQiOjE1OTA0MzgzNjB9.Dc3fbLoqveybjXvDWdzNKQ2K9TrKJqbCqs8GpiqU1NY",
 						"type": "string"
 					}
 				]
@@ -1778,6 +1963,70 @@
 							"body": "[\n    {\n        \"categoryId\": 1,\n        \"name\": \"Hrana\",\n        \"imagePath\": \"assets/hrana.jpeg\",\n        \"parentCategoryId\": null,\n        \"categories\": [\n            {\n                \"categoryId\": 5,\n                \"name\": \"Mlecniproizvodi\",\n                \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n                \"parentCategoryId\": 1\n            }\n        ],\n        \"products\": []\n    },\n    {\n        \"categoryId\": 3,\n        \"name\": \"Mleko\",\n        \"imagePath\": \"assets/mleko.jpg\",\n        \"parentCategoryId\": 5,\n        \"categories\": [],\n        \"products\": [\n            {\n                \"productId\": 2,\n                \"name\": \"Marmelada\",\n                \"description\": \"neka marmelada\",\n                \"categoryId\": 3\n            }\n        ]\n    },\n    {\n        \"categoryId\": 4,\n        \"name\": \"Pavlaka\",\n        \"imagePath\": \"assets/pavlaka.jpg\",\n        \"parentCategoryId\": 5,\n        \"categories\": [],\n        \"products\": []\n    },\n    {\n        \"categoryId\": 5,\n        \"name\": \"Mlecniproizvodi\",\n        \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n        \"parentCategoryId\": 1,\n        \"categories\": [\n            {\n                \"categoryId\": 3,\n                \"name\": \"Mleko\",\n                \"imagePath\": \"assets/mleko.jpg\",\n                \"parentCategoryId\": 5\n            },\n            {\n                \"categoryId\": 4,\n                \"name\": \"Pavlaka\",\n                \"imagePath\": \"assets/pavlaka.jpg\",\n                \"parentCategoryId\": 5\n            }\n        ],\n        \"products\": [\n            {\n                \"productId\": 1,\n                \"name\": \"Jogurt\",\n                \"description\": \"mlecni\",\n                \"categoryId\": 5\n            }\n        ]\n    },\n    {\n        \"categoryId\": 6,\n        \"name\": \"Hemija \",\n        \"imagePath\": \"assets/hemija.jpg\",\n        \"parentCategoryId\": null,\n        \"categories\": [\n            {\n                \"categoryId\": 7,\n                \"name\": \"Detrdzenti\",\n                \"imagePath\": \"assets/detrdzenti.jpg\",\n                \"parentCategoryId\": 6\n            }\n        ],\n        \"products\": []\n    },\n    {\n        \"categoryId\": 7,\n        \"name\": \"Detrdzenti\",\n        \"imagePath\": \"assets/detrdzenti.jpg\",\n        \"parentCategoryId\": 6,\n        \"categories\": [],\n        \"products\": []\n    }\n]"
 						}
 					]
+				},
+				{
+					"name": "Add a single category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Add a single category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/category/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-p3NkwXzd/r68agGf6yi15nHBv/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:11:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"categoryId\": 1,\n    \"name\": \"Hrana\",\n    \"imagePath\": \"assets/hrana.jpeg\",\n    \"parentCategoryId\": null,\n    \"categories\": [\n        {\n            \"categoryId\": 5,\n            \"name\": \"Mlecniproizvodi\",\n            \"imagePath\": \"assets/mlecniproizvodi.jpg\",\n            \"parentCategoryId\": 1\n        }\n    ],\n    \"products\": [\n        {\n            \"productId\": 14,\n            \"name\": \"Proizvod 1\",\n            \"description\": \"neki opis\",\n            \"categoryId\": 1\n        }\n    ]\n}"
+						}
+					]
 				}
 			],
 			"auth": {
@@ -1927,6 +2176,70 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"productPriceId\": 1,\n        \"price\": \"100.00\",\n        \"createdAt\": \"2020-05-22T17:22:13.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 2,\n        \"price\": \"1000.00\",\n        \"createdAt\": \"2020-05-22T17:41:00.000Z\",\n        \"productId\": 1\n    },\n    {\n        \"productPriceId\": 4,\n        \"price\": \"250.00\",\n        \"createdAt\": \"2020-05-22T17:25:00.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 6,\n        \"price\": \"1000000.00\",\n        \"createdAt\": \"2020-05-22T18:36:14.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 9,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:04:27.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 10,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:10:08.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 11,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:10:33.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 12,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:15:23.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 13,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:19:43.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 14,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:19:52.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 15,\n        \"price\": \"0.00\",\n        \"createdAt\": \"2020-05-22T20:21:53.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 16,\n        \"price\": \"201.00\",\n        \"createdAt\": \"2020-05-22T20:27:58.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 17,\n        \"price\": \"201.00\",\n        \"createdAt\": \"2020-05-22T20:28:58.000Z\",\n        \"productId\": 2\n    },\n    {\n        \"productPriceId\": 18,\n        \"price\": \"201.00\",\n        \"createdAt\": \"2020-05-22T21:02:47.000Z\",\n        \"productId\": 2\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a single product price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Add a single product price",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/productPrice/6/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productPrice",
+										"6",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-wkaY1jPPl+XcchY1T00o9GZzVwc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:17:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"productPriceId\": 6,\n    \"price\": \"1000000.00\",\n    \"createdAt\": \"2020-05-22T18:36:14.000Z\",\n    \"productId\": 2\n}"
 						}
 					]
 				}
@@ -2081,6 +2394,70 @@
 							"body": "[]"
 						}
 					]
+				},
+				{
+					"name": "Add a single news",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Add a single news",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/news/3/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"news",
+										"3",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"63-BItsioyXjMlOKG3ZINz9ezoz20Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:18:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"newsId\": 3,\n    \"caption\": 1,\n    \"text\": \"kugciu\",\n    \"picture\": \"2020524-7537411282-slika-mleko.jpg\",\n    \"adminId\": 1\n}"
+						}
+					]
 				}
 			],
 			"auth": {
@@ -2180,6 +2557,70 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"photoId\": 2,\n        \"description\": \"Slika mleko\",\n        \"imagePath\": \"C:\\\\Users\\\\Milijana\\\\Desktop\\\\Projekat\\\\storage\\\\photos\",\n        \"productId\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a single photo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Add a single photo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/photo/3/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"photo",
+										"3",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-kN+GWSaRTHVk6EH+L27VKxLRgaQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:19:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"photoId\": 3,\n    \"description\": \"0\",\n    \"imagePath\": \"2020524-7537411282-slika-mleko.jpg\",\n    \"productId\": 2\n}"
 						}
 					]
 				}
@@ -2282,6 +2723,70 @@
 							"body": "[\n    {\n        \"inboxId\": 1,\n        \"name\": \"poruka1\",\n        \"mail\": \"neki tekst\",\n        \"message\": \"Neki malo duzi tekst\"\n    },\n    {\n        \"inboxId\": 2,\n        \"name\": \"poruka2\",\n        \"mail\": \"neka druga poruka\",\n        \"message\": \"Neki dugacak tekst\"\n    }\n]"
 						}
 					]
+				},
+				{
+					"name": "Add a single message in inbox",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Add a single message in inbox",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/inbox/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"inbox",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53-fzi6sfuynaLiWKTqr0PqRb5YqzY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:20:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"inboxId\": 1,\n    \"name\": \"poruka1\",\n    \"mail\": \"neki tekst\",\n    \"message\": \"Neki malo duzi tekst\"\n}"
+						}
+					]
 				}
 			],
 			"auth": {
@@ -2380,6 +2885,70 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"galleryId\": 1,\n        \"imagePath\": \"C:\\\\Users\\\\Milijana\\\\Desktop\\\\Projekat\\\\storage\\\\photos\",\n        \"description\": \"Slika mleka\",\n        \"isVisible\": {\n            \"type\": \"Buffer\",\n            \"data\": [\n                1\n            ]\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a single gallery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "Add a single gallery",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/gallery/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"gallery",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "154"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9a-aUer0cPEZIYdxOpIiX47xbUTTak\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 May 2020 20:22:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"galleryId\": 1,\n    \"imagePath\": \"C:\\\\Users\\\\Milijana\\\\Desktop\\\\Projekat\\\\storage\\\\photos\",\n    \"description\": \"Slika mleka\",\n    \"isVisible\": {\n        \"type\": \"Buffer\",\n        \"data\": [\n            1\n        ]\n    }\n}"
 						}
 					]
 				}
