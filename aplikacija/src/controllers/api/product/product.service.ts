@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import {TypeOrmCrudService} from "@nestjsx/crud-typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository, Entity } from "typeorm";
+import { Repository, Entity, Any, In } from "typeorm";
 import { Product } from "src/controllers/api/entities/product.entity";
 import { AddProductDto } from "src/dtos/product/add.product.dto";
 import { ApiResponse } from "src/misc/api.response.class";
@@ -111,14 +111,17 @@ export class ProductService extends TypeOrmCrudService<Product>{
     async search(data: ProductSearchDto): Promise<Product[]>{
       const builder = await this.productRepository.createQueryBuilder("productRepository");
     
-      builder.innerJoin("productRepository.productPrices", "pp");
+      builder.innerJoinAndSelect("productRepository.productPrices", "pp",
+      
+      "pp.createdAt=(SELECT MAX(pp.created_at) FROM product_price AS pp WHERE pp.product_id= productRepository.product_id ORDER BY createdAt )");
 
 
       builder.where('productRepository.categoryId = :catId', {dcatId: data.categoryId});
 
       if(data.keywords && data.keywords.length>0){
-        builder.andWhere(`productRepository.name LIKE :kw
-                          OR productRepository.description LIKE :kw`, {kw: '%' + data.keywords.trim() + '%'});
+        builder.andWhere(`(productRepository.name LIKE :kw
+                          OR productRepository.description LIKE :kw)`,
+                           {kw: '%' + data.keywords.trim() + '%'});
 
       
       }
@@ -139,6 +142,10 @@ export class ProductService extends TypeOrmCrudService<Product>{
 
         if(orderBy === 'price'){
           orderBy= 'pp.price';
+        }
+
+        if(orderBy=== 'price'){
+          orderBy= 'productRepository.name';
         }
 
       }
@@ -164,9 +171,16 @@ export class ProductService extends TypeOrmCrudService<Product>{
       builder.skip(page*perPage);
       builder.take(perPage);
 
-      let items = await builder.getMany();
+      let productIds = await (await builder.getMany()).map(productRepository=> productRepository.productId);
 
-      return items;
+      return await this.productRepository.find({
+        where: {productId: In(productIds)},
+        relations: [
+          "category",
+          "productPrices",
+          "photos"
+        ]
+      });
     } 
 
     constructor(
