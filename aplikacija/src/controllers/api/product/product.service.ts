@@ -7,6 +7,9 @@ import { AddProductDto } from "src/dtos/product/add.product.dto";
 import { ApiResponse } from "src/misc/api.response.class";
 import { ProductPrice } from "src/controllers/api/entities/product-price.entity";
 import { EditProductDto } from "src/dtos/product/edit.product.dto";
+import { async } from "rxjs/internal/scheduler/async";
+import { ProductSearchDto } from "src/dtos/product/product.search.dto";
+import { min } from "class-validator";
 
 @Injectable()
 export class ProductService extends TypeOrmCrudService<Product>{
@@ -100,8 +103,71 @@ export class ProductService extends TypeOrmCrudService<Product>{
               "productPrices",
               "photos"
             ]
-          })
+          });
+          
+         
     }
+
+    async search(data: ProductSearchDto): Promise<Product[]>{
+      const builder = await this.productRepository.createQueryBuilder("productRepository");
+    
+      builder.innerJoin("productRepository.productPrices", "pp");
+
+
+      builder.where('productRepository.categoryId = :catId', {dcatId: data.categoryId});
+
+      if(data.keywords && data.keywords.length>0){
+        builder.andWhere(`productRepository.name LIKE :kw
+                          OR productRepository.description LIKE :kw`, {kw: '%' + data.keywords.trim() + '%'});
+
+      
+      }
+
+      if(data.priceMin && typeof data.priceMin === 'number'){
+        builder.andWhere('pp.price>= :min',{min : data.priceMin} );
+      }
+
+      if(data.priceMax && typeof data.priceMax === 'number'){
+        builder.andWhere('pp.price <= :max',{max : data.priceMax} );
+      }
+
+      let orderBy = 'productRepository.name';
+      let orderDirection : 'ASC'| 'DESC'= 'ASC';
+
+      if(data.orderBy){
+        orderBy = data.orderBy;
+
+        if(orderBy === 'price'){
+          orderBy= 'pp.price';
+        }
+
+      }
+
+      if(data.orderDirection){
+        orderDirection = data.orderDirection;
+      }
+
+      builder.orderBy(orderBy, orderDirection);
+
+      let page = 0;
+      let perPage: 5| 10 = 10;
+
+      if(data.page && typeof data.page === 'number'){
+        page = data.page;
+
+      }
+
+      if(data.itemsPerPage && typeof data.itemsPerPage === 'number'){
+        perPage = data.itemsPerPage;
+      }
+
+      builder.skip(page*perPage);
+      builder.take(perPage);
+
+      let items = await builder.getMany();
+
+      return items;
+    } 
 
     constructor(
         @InjectRepository(Product) private readonly productRepository: Repository<Product>, // !!!

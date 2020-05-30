@@ -1,4 +1,4 @@
-import { Validator } from "class-validator";
+import * as Validator from 'class-validator';
 
 
 export class LoginAdminDto{
@@ -12,5 +12,4 @@ export class LoginAdminDto{
    @Validator.IsString()
    @Validator.Length(6,128)
    password: string;
-}
 }

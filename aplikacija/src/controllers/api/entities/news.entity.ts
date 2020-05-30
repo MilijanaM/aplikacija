@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Admin } from "./admin.entity";
-import { Validator } from "class-validator";
+import * as Validator from 'class-validator';
 
 
 @Index("fk_news_admin_id", ["adminId"], {})

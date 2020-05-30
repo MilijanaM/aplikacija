@@ -1,4 +1,4 @@
-import { Validator } from "class-validator";
+import * as Validator from 'class-validator';
 
 
 export class EditAdminDto{

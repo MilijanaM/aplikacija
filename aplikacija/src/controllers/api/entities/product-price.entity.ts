@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Product } from "./product.entity";
-import { Validator } from "class-validator";
+import * as Validator from 'class-validator';
 
 
 

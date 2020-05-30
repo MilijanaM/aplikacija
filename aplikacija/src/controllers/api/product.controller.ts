@@ -14,6 +14,7 @@ import * as fs from 'fs';
 import * as sharp from 'sharp';
 import { EditProductDto } from "src/dtos/product/edit.product.dto";
 import { AddProductDto } from "src/dtos/product/add.product.dto";
+import { ProductSearchDto } from "src/dtos/product/product.search.dto";
 
 @Controller('api/product')
 @Crud({
@@ -255,5 +256,12 @@ async deletePhoto(
     async editById(@Param('id') id: number, @Body() data: EditProductDto) {
         console.log('Body from rq'+ data.name);
         return await this.service.editProduct(id, data);
+    }
+
+
+
+    @Post('search')
+    async search(@Body() data: ProductSearchDto): Promise<Product[]>{
+        return await this.service.search(data);
     }
 }

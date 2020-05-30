@@ -1,5 +1,5 @@
 import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
-import { Validator } from "class-validator";
+import * as Validator from 'class-validator';
 
 
 @Index("uq_inbox_name", ["name"], { unique: true })
@@ -11,7 +11,7 @@ export class Inbox {
   @Column({ type: "varchar", name: "name", unique: true, length: 50 })
   @Validator.IsNotEmpty()
   @Validator.IsString()
-  @Validator.Lenght(0,50)
+  @Validator.Length(0,50)
   name: string;
 
   @Column( { type: "varchar",name: "mail", length: 128 })
