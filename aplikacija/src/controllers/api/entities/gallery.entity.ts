@@ -1,4 +1,5 @@
 import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+import { Validator } from "class-validator";
 
 @Index("uq_gallery_image_path", ["imagePath"], { unique: true })
 @Entity("gallery")
@@ -10,9 +11,15 @@ export class Gallery {
   galleryId: number;
 
   @Column( {type: "varchar", name: "image_path", unique: true, length: 128 })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Lenght(0,128)
   imagePath: string;
 
   @Column( { type: "varchar",name: "description", length: 128 })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Lenght(0,128)
   description: string;
 
   @Column({
@@ -21,5 +28,8 @@ export class Gallery {
     nullable: true,
     default: () => "'b'1''",
   })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.IsIn([boolean | null])
   isVisible: boolean | null;
 }

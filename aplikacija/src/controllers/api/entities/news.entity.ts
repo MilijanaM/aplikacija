@@ -7,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Admin } from "./admin.entity";
+import { Validator } from "class-validator";
+
 
 @Index("fk_news_admin_id", ["adminId"], {})
 @Entity("news")
@@ -15,6 +17,13 @@ export class News {
   newsId: number;
 
   @Column( {type: "int", name: "caption"})
+  @Validator.IsNotEmpty()
+  @Validator.IsPositive()
+  @Validator.IsNumber({
+    allowInfinity: false,
+    allowNaN: false,
+    maxDecimalPlaces:0,
+  })
   caption: number;
 
   @Column( { type: "text",name: "text" })

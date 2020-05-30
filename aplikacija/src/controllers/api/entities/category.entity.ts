@@ -10,7 +10,7 @@ import {
 
 import { Admin } from "./admin.entity";
 import { Product } from "./product.entity";
-
+import { Validator } from "class-validator";
 
 
 @Index("fk_category_parent__category_id", ["parentCategoryId"], {})
@@ -20,9 +20,15 @@ export class Category {
   categoryId: number;
 
   @Column({type: "varchar", name: "name", length: 50})
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Lenght(0,50)
   name: string;
 
   @Column( {type: "varchar",name: "image_path", length: 255})
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Lenght(0,255)
   imagePath: string;
 
   @Column( {

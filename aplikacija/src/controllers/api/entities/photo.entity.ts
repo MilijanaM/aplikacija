@@ -7,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Product } from "./product.entity";
+import { Validator } from "class-validator";
+
 
 @Index("fk_photo_product_id", ["productId"], {})
 @Entity("photo")
@@ -15,9 +17,15 @@ export class Photo {
   photoId: number;
 
   @Column( { type: "varchar",name: "description", length: 255, default: () => "'0'" })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Lenght(0,255)
   description: string;
 
   @Column( {type: "varchar", name: "image_path", length: 255, default: () => "'0'" })
+  @Validator.IsNotEmpty()
+  @Validator.IsString()
+  @Validator.Lenght(0,255)
   imagePath: string;
 
   @Column( {type: "int", name: "product_id", unsigned: true, default: () => "'0'" })
