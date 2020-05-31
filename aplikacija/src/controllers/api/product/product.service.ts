@@ -113,10 +113,10 @@ export class ProductService extends TypeOrmCrudService<Product>{
     
       builder.innerJoinAndSelect("productRepository.productPrices", "pp",
       
-      "pp.createdAt=(SELECT MAX(pp.created_at) FROM product_price AS pp WHERE pp.product_id= productRepository.product_id ORDER BY createdAt )");
+      "pp.createdAt=(SELECT MAX(pp.created_at) FROM product_price AS pp WHERE pp.product_id= productRepository.product_id ORDER BY created_at )");
 
 
-      builder.where('productRepository.categoryId = :catId', {dcatId: data.categoryId});
+      builder.where('productRepository.categoryId = :catId', {catId: data.categoryId});
 
       if(data.keywords && data.keywords.length>0){
         builder.andWhere(`(productRepository.name LIKE :kw
