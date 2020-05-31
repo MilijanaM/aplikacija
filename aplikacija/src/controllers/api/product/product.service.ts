@@ -119,6 +119,7 @@ export class ProductService extends TypeOrmCrudService<Product>{
       builder.where('productRepository.categoryId = :catId', {catId: data.categoryId});
 
       if(data.keywords && data.keywords.length>0){
+        
         builder.andWhere(`(productRepository.name LIKE :kw
                           OR productRepository.description LIKE :kw)`,
                            {kw: '%' + data.keywords.trim() + '%'});
