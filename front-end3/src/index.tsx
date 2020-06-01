@@ -4,11 +4,19 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MainMenu } from './components/MainMenu/MainMenu';
+import { MainMenu, MainMenuItem } from './components/MainMenu/MainMenu';
+
+const menuItems = [
+   new MainMenuItem("Home", "/"),
+   new MainMenuItem("About us", "/page/about-us"),
+   new MainMenuItem("Contact", "/contact/"),
+   new MainMenuItem("Log in", "/user/login/"),
+
+];
 
 ReactDOM.render(
   <React.StrictMode>
-    <MainMenu></MainMenu>
+    <MainMenu items={menuItems}></MainMenu>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
