@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { MainMenu } from './components/MainMenu/MainMenu';
 
 ReactDOM.render(
   <React.StrictMode>
+    <MainMenu></MainMenu>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
