@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {Container} from 'react-bootstrap';
 import 'jquery/dist/jquery.js';
 import 'popper.js/dist/popper.js';
@@ -10,7 +9,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { MainMenu } from '../MainMenu/MainMenu';
 
 
-function App() {
+function HomePage() {
   return (
 
     <Container>
@@ -21,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;
