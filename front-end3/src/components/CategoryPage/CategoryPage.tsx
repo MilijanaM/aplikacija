@@ -24,7 +24,7 @@ export default class CategoryPage extends React.Component<CategoryPageProperties
     constructor(props: Readonly<CategoryPageProperties>){
        super(props);
 
-       this.state= { }};
+       this.state= { };
    }
 
    render(){
@@ -33,7 +33,7 @@ export default class CategoryPage extends React.Component<CategoryPageProperties
         <Card>
            <Card.Body>
                <Card.Title>
-               <FontAwesomeIcon icon={faListAlt}/> {this.StaticRange.category?.name}
+               <FontAwesomeIcon icon={faListAlt}/> {this.state.category?.name}
                </Card.Title>
                <Card.Text>
                    Here we will have our products...
