@@ -26,7 +26,7 @@ export default function api(
                .catch(async err=>{ 
                 if(err.response.status=== 401){
                     const newToken = await refreshToken(
-                        
+
                     );
     
                     if(!newToken){
@@ -47,6 +47,7 @@ export default function api(
                     return await repeatRequest(requestData, resolve);
     
                    }
+                   
                 const response: apiResponse={
 
                     status: 'error',
@@ -60,7 +61,7 @@ export default function api(
         
     }
 
-    interface apiResponse{
+    export interface apiResponse{
         status: 'ok'| 'error'|'login';
         data: any;
     }
