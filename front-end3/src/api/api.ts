@@ -25,7 +25,9 @@ export default function api(
             .then(res => responseHandler(res, resolve))
                .catch(async err=>{ 
                 if(err.response.status=== 401){
-                    const newToken = await refreshToken();
+                    const newToken = await refreshToken(
+                        
+                    );
     
                     if(!newToken){
                         const response: apiResponse= {
