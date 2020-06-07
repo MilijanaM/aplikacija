@@ -24,8 +24,7 @@ export default function api(
                  axios(requestData)
                  .then(res => responseHandler(res, resolve))
                  .catch(async err => {
-                    if (err.response.status === 401)
-                
+                    
                      {
                          const newToken = await refreshToken();
              

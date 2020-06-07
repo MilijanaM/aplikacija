@@ -10,13 +10,14 @@ interface AdminLoginPageState {
     
     email: string;
     password: string;
-    errorMessage: string;
+    message: string;
     isLoggedIn: boolean;
     
 }
 
 export default class AdminLoginPage extends React.Component{
     state: AdminLoginPageState;
+    setLoggedInState: any;
 
     constructor(props: Readonly<{}>){
         super(props);
@@ -24,19 +25,41 @@ export default class AdminLoginPage extends React.Component{
         this.state={
             email:'',
             password: '',
-            errorMessage:'',
+            message:'',
             isLoggedIn: false,
         }
 }
 
+
+private handleFormInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    let stateFieldName = '';
+
+    if (event.target.id === 'email') {
+        stateFieldName = 'email';
+    } else if (event.target.id === 'password') {
+        stateFieldName = 'password';
+    }
+
+    if (stateFieldName === '') {
+        return;
+    }
+
+    const newState = Object.assign(this.state, {
+        [ stateFieldName ]: event.target.value,
+    });
+
+    this.setState(newState);
+}
+
+/* 
 private formInputChange(event: React.ChangeEvent<HTMLInputElement>){
     const newState= Object.assign(this.state, {
         [event.target.id]: event.target.value,
     });
     this.setState(newState);
-}
+} */
 
-private setErrorMessage(message: string){
+private setMessage(message: string){
     const newState = Object.assign(this.state, {
         errorMessage: message,
     });
@@ -52,51 +75,38 @@ private setLogginState(isLoggedIn: boolean){
 
 }
 private doLogin() {
-    api(
-        'auth/admin/login',
-        'post',
-        {
-            email: this.state.email,
-            password: this.state.password,
-        }
-    )
+    
+    api('/auth/login', 'post', {
+        email: this.state.email,
+        password: this.state.password,
+    })
     .then((res: apiResponse) => {
         if (res.status === 'error') {
-            this.setErrorMessage('System error... Try again!');
-
+            this.setMessage('There was an error. Please try again!');
             return;
         }
- 
 
+        if (res.data.statusCode !== undefined) {
+            switch (res.data.statusCode) {
+                case -3001: this.setMessage('This user does not exist!'); break;
+                case -3002: this.setMessage('Bad password!'); break;
+            }
+            return;
+        }
 
-       if(res.status==='ok'){
-           if(res.data.statusCode!== undefined){
-               let message='';
-               switch (res.data.statusCode){
-                   case -3001: message='Unknown e-mail!'; break;
-                   case -3002: message='Bad password!'; break;
-               }
-               this.setErrorMessage(message);
-               return;
-           }
+        saveToken(res.data.token);
+            saveRefreshToken(res.data.refreshToken);
 
-           saveToken(res.data.token);
-           saveRefreshToken(res.data.saveRefreshToken);
-        
-           this.setLogginState(true);
+            this.setLoggedInState(true);
+        });
+    }
 
-
-       }
-
-   });
-}
-    render(){
-         if(this.state.isLoggedIn===true){
-             return(
-                 <Redirect to="/"/>
-
-             );
-         }
+    render() {
+        if (this.state.isLoggedIn) {
+            return (
+                <Redirect to="/" />
+            );
+        }
          return (
             <Container>
                 <Col md={ { span: 6, offset: 3 } }>
@@ -105,29 +115,31 @@ private doLogin() {
                             <Card.Title>
                                 <FontAwesomeIcon icon={ faSignInAlt } /> User Login
                             </Card.Title>
+
                             <Form>
                                 <Form.Group>
                                     <Form.Label htmlFor="email">E-mail:</Form.Label>
                                     <Form.Control type="email" id="email"
-                                                    value={ this.state.email }
-                                                    onChange={ event => this.formInputChange(event as any) } />
+                                                  value={ this.state.email }
+                                                  onChange={ (event) => this.handleFormInputChange(event as any) } />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label htmlFor="password">Password:</Form.Label>
                                     <Form.Control type="password" id="password"
-                                                    value={ this.state.password }
-                                                    onChange={ event => this.formInputChange(event as any) } />
+                                                  value={ this.state.password }
+                                                  onChange={ (event) => this.handleFormInputChange(event as any) } />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Button variant="primary"
+                                    <Button variant="primary" block
                                             onClick={ () => this.doLogin() }>
-                                        Log in
+                                        <FontAwesomeIcon icon={ faSignInAlt } /> Log in
                                     </Button>
                                 </Form.Group>
                             </Form>
+
                             <Alert variant="danger"
-                                   className={ this.state.errorMessage ? '' : 'd-none' }>
-                                { this.state.errorMessage }
+                                   className={ this.state.message ? '' : 'd-none' }>
+                                { this.state.message }
                             </Alert>
                         </Card.Body>
                     </Card>
@@ -135,7 +147,4 @@ private doLogin() {
             </Container>
         );
     }
-    //formInputChanged(arg0: any): void {
-      //  throw new Error("Method not implemented.");
-    //}
 }
