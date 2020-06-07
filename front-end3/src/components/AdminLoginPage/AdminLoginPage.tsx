@@ -1,10 +1,13 @@
 import React from 'react';
+import { Container, Card, Form, Button, Col, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import { Container, Card, Form, Button, Col, Alert } from 'react-bootstrap';
-import api, {apiResponse, saveToken, saveRefreshToken }from '../../api/api';
+import api, { apiResponse, saveToken,saveRefreshToken } from '../../api/api'; 
+import { Redirect } from 'react-router-dom';
+
 
 interface AdminLoginPageState {
+    
     email: string;
     password: string;
     errorMessage: string;
@@ -48,17 +51,23 @@ private setLogginState(isLoggedIn: boolean){
     this.setState(newState);
 
 }
+private doLogin() {
+    api(
+        'auth/admin/login',
+        'post',
+        {
+            email: this.state.email,
+            password: this.state.password,
+        }
+    )
+    .then((res: apiResponse) => {
+        if (res.status === 'error') {
+            this.setErrorMessage('System error... Try again!');
 
-private doLogin{
-   api('auth/admin/login', 'post', {
-       email: this.state.email,
-       password: this.state.password,
-   }
-   ).then((res: apiResponse) => {
-       if(res.status==='error'){
-           console.log(res.data);
-           return;
-       }
+            return;
+        }
+ 
+
 
        if(res.status==='ok'){
            if(res.data.statusCode!== undefined){
@@ -88,49 +97,45 @@ private doLogin{
 
              );
          }
-        return(
-        <Container>
-            <Col md={{ span:6, offset:3}}>
-            <Card>
-               <Card.Body>
-                   <Card.Title>
-                   <FontAwesomeIcon icon={faSignInAlt}/> Admin Login 
-                   </Card.Title>
-                  
-                       <Form>
-                           <Form.Group>
-                               <Form.Label htmlFor="email">E-mail<Form.Label/>
-                            <Form.Control type="email" id="email"
-                                          value= {this.state.email}
-                                          onChange={ event => this.formInputChange(event as any)}/>
-                           <Form.Group/>
-
-                           <Form.Group>
-                               <Form.Label htmlFor="password">password<Form.Label/>
-                            <Form.Control type="password" id="password"
-                                          value= {this.state.password}
-                                          onChange={ event => this.formInputChange(event as any)}/>
-                           <Form.Group/>
-
-                           <Form.Group> 
-                               <Button variant="primary"
-                                       onClick={()=> this.doLogin()}>
-                                   Log in
-                               </Button>
-                           </Form.Group>
-                       <Form/>
-                  <Alert variant="danger"
-                          className={this.state.errorMessage ? '' : 'd-none'}>
-                      {this.state.errorMessage }
-                  </Alert>
-               </Card.Body>
-            </Card>
-            </Col>
-           
-            
-        </Container>
+         return (
+            <Container>
+                <Col md={ { span: 6, offset: 3 } }>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>
+                                <FontAwesomeIcon icon={ faSignInAlt } /> User Login
+                            </Card.Title>
+                            <Form>
+                                <Form.Group>
+                                    <Form.Label htmlFor="email">E-mail:</Form.Label>
+                                    <Form.Control type="email" id="email"
+                                                    value={ this.state.email }
+                                                    onChange={ event => this.formInputChange(event as any) } />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor="password">Password:</Form.Label>
+                                    <Form.Control type="password" id="password"
+                                                    value={ this.state.password }
+                                                    onChange={ event => this.formInputChange(event as any) } />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Button variant="primary"
+                                            onClick={ () => this.doLogin() }>
+                                        Log in
+                                    </Button>
+                                </Form.Group>
+                            </Form>
+                            <Alert variant="danger"
+                                   className={ this.state.errorMessage ? '' : 'd-none' }>
+                                { this.state.errorMessage }
+                            </Alert>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Container>
         );
     }
-
-
+    //formInputChanged(arg0: any): void {
+      //  throw new Error("Method not implemented.");
+    //}
 }
