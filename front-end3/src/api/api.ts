@@ -144,6 +144,7 @@ async function repeatRequest(
     .catch(err => {
         const response: ApiResponse = {
             status: 'error',
+            
             data: err,
         };
 
