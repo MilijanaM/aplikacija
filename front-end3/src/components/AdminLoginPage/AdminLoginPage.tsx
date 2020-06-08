@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Card, Form, Button, Col, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import api, { apiResponse, saveToken,saveRefreshToken } from '../../api/api'; 
+import api, { ApiResponse, saveToken,saveRefreshToken } from '../../api/api'; 
 import { Redirect } from 'react-router-dom';
 
 
@@ -80,7 +80,7 @@ private doLogin() {
         email: this.state.email,
         password: this.state.password,
     })
-    .then((res: apiResponse) => {
+    .then((res: ApiResponse) => {
         if (res.status === 'error') {
             this.setMessage('There was an error. Please try again!');
             return;

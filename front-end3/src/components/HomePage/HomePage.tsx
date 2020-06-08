@@ -9,7 +9,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { MainMenu } from '../MainMenu/MainMenu';
 import CategoryType from '../../types/CategoryType';
 import { Redirect, Link } from 'react-router-dom';
-import api, {apiResponse} from '../../api/api';
+import api, {ApiResponse} from '../../api/api';
 
 
 interface HomePageState {
@@ -45,7 +45,7 @@ class HomePage extends React.Component {
 
    private getCategories(){
        api('api/category/', 'get', {})
-       .then((res: apiResponse)=>{
+       .then((res: ApiResponse)=>{
           if(res.status==="error"|| res.status==="login"){
             this.setAdminLoggedInState(false);
             return;
@@ -83,6 +83,7 @@ class HomePage extends React.Component {
       return (
           <Redirect to="/admin/login" />
       );
+    }
       return (
         <Container>
           <Card>
@@ -98,7 +99,7 @@ class HomePage extends React.Component {
           </Card>
         </Container>
       );
-    }
+    
   }
 
   private renderSingleCategory(category: CategoryType) {
