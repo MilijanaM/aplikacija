@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 
 interface AdminLoginPageState {
     
-    email: string;
+    username: string;
     password: string;
     message: string;
     isLoggedIn: boolean;
@@ -17,13 +17,12 @@ interface AdminLoginPageState {
 
 export default class AdminLoginPage extends React.Component{
     state: AdminLoginPageState;
-    setLoggedInState: any;
 
     constructor(props: Readonly<{}>){
         super(props);
     
         this.state={
-            email:'',
+            username:'',
             password: '',
             message:'',
             isLoggedIn: false,
@@ -34,8 +33,8 @@ export default class AdminLoginPage extends React.Component{
 private handleFormInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     let stateFieldName = '';
 
-    if (event.target.id === 'email') {
-        stateFieldName = 'email';
+    if (event.target.id === 'username') {
+        stateFieldName = 'username';
     } else if (event.target.id === 'password') {
         stateFieldName = 'password';
     }
@@ -67,17 +66,17 @@ private setMessage(message: string){
 
 }
 
-private setLogginState(isLoggedIn: boolean){
-    const newState = Object.assign(this.state, {
-        isLoggedIn: isLoggedIn,
-    });
-    this.setState(newState);
+private setLoggedInState(state: boolean){
+    this.setState( Object.assign(this.state, {
+        isLoggedIn: state,
+    }));
+
 
 }
 private doLogin() {
     
     api('/auth/login', 'post', {
-        email: this.state.email,
+        username: this.state.username,
         password: this.state.password,
     })
     .then((res: ApiResponse) => {
@@ -113,14 +112,14 @@ private doLogin() {
                     <Card>
                         <Card.Body>
                             <Card.Title>
-                                <FontAwesomeIcon icon={ faSignInAlt } /> User Login
+                                <FontAwesomeIcon icon={ faSignInAlt } /> Admin Login
                             </Card.Title>
 
                             <Form>
                                 <Form.Group>
-                                    <Form.Label htmlFor="email">E-mail:</Form.Label>
-                                    <Form.Control type="email" id="email"
-                                                  value={ this.state.email }
+                                    <Form.Label htmlFor="username">Username:</Form.Label>
+                                    <Form.Control type="username" id="username"
+                                                  value={ this.state.username }
                                                   onChange={ (event) => this.handleFormInputChange(event as any) } />
                                 </Form.Group>
                                 <Form.Group>
@@ -132,7 +131,7 @@ private doLogin() {
                                 <Form.Group>
                                     <Button variant="primary" block
                                             onClick={ () => this.doLogin() }>
-                                        <FontAwesomeIcon icon={ faSignInAlt } /> Log in
+                                        <FontAwesomeIcon icon={ faSignInAlt } /> Login
                                     </Button>
                                 </Form.Group>
                             </Form>

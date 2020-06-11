@@ -18,6 +18,8 @@ export default function api(
             },
         };
 
+        console.log("test1");
+        
         axios(requestData)
         .then(res => responseHandler(res, resolve))
         .catch(async err => {
@@ -144,7 +146,7 @@ async function repeatRequest(
     .catch(err => {
         const response: ApiResponse = {
             status: 'error',
-            
+
             data: err,
         };
 
