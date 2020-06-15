@@ -1,4 +1,4 @@
-import { Module , NestModule, MiddlewareConsumer} from '@nestjs/common';
+import { Module , NestModule, MiddlewareConsumer, Logger} from '@nestjs/common';
 import { AppController } from './controllers/app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
@@ -57,7 +57,8 @@ import { AuthMiddleware } from './middlewares/auth.middlewares';
         ProductPrice,
         Product
       
-      ]
+      ],
+      logging: true,
     }),
 
     TypeOrmModule.forFeature([
@@ -69,7 +70,7 @@ import { AuthMiddleware } from './middlewares/auth.middlewares';
       Inbox,
       News,
       Photo,
-      ProductPrice
+      ProductPrice,
 
     ])
   ],
