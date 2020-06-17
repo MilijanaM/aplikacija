@@ -23,31 +23,31 @@ export default function api(
         axios(requestData)
         .then(res => responseHandler(res, resolve))
         .catch(async err => {
-            if (err.response.status === 401) {
-                const newToken = await refreshToken();
+            // if (err.response.status === 401) {
+            //     const newToken = await refreshToken();
     
-                if (!newToken) {
-                    const response: ApiResponse = {
-                        status: 'login',
-                        data: null,
-                    };
+            //     if (!newToken) {
+            //         const response: ApiResponse = {
+            //             status: 'login',
+            //             data: null,
+            //         };
             
-                    return resolve(response);
-                }
+            //         return resolve(response);
+            //     }
     
-                saveToken(newToken);
+            //     saveToken(newToken);
     
-                requestData.headers['Authorization'] = getToken();
+            //     requestData.headers['Authorization'] = getToken();
     
-                return await repeatRequest(requestData, resolve);
-            }
+            //     return await repeatRequest(requestData, resolve);
+            // }
 
-            const response: ApiResponse = {
-                status: 'error',
-                data: err
-            };
+            // const response: ApiResponse = {
+            //     status: 'error',
+            //     data: err
+            // };
 
-            resolve(response);
+            // resolve(response);
         });
     });
 }
@@ -88,16 +88,18 @@ export function saveToken(token: string) {
 }
 
 function getRefreshToken(): string {
-    const token = localStorage.getItem('api_refresn_token');
+    const token = localStorage.getItem('api_refresh_token');
     return token + '';
 }
 
 export function saveRefreshToken(token: string) {
-    localStorage.setItem('api_refresn_token', token);
+    localStorage.setItem('api_refresh_token', token);
 }
 
+
+
 async function refreshToken(): Promise<string | null> {
-    const path = 'auth/user/refresh';
+    const path = 'auth/refresh';
     const data = {
         token: getRefreshToken(),
     }

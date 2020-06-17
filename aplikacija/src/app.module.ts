@@ -29,6 +29,7 @@ import { ProductPriceController } from './controllers/api/productPrice.controlle
 import { ProductPriceService } from './services/productPrice/productPrice.service';
 import { AuthController } from './controllers/api/auth.controller';
 import { AuthMiddleware } from './middlewares/auth.middlewares';
+import { AdminToken } from './controllers/api/entities/admin-token.entity';
 
 
 
@@ -50,15 +51,13 @@ import { AuthMiddleware } from './middlewares/auth.middlewares';
         Gallery,
         Inbox,
         Photo,
-
-
-        
         News,
         ProductPrice,
-        Product
+        Product,
+        AdminToken
       
       ],
-      logging: true,
+      //logging: true,
     }),
 
     TypeOrmModule.forFeature([
@@ -71,6 +70,7 @@ import { AuthMiddleware } from './middlewares/auth.middlewares';
       News,
       Photo,
       ProductPrice,
+      AdminToken
 
     ])
   ],

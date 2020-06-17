@@ -4,6 +4,9 @@ export class JwtDataAdminDto{
     exp:number; //UNIX TIMESTAMP
     ip: string;
     ua: string;
+    role: string;
+    identity: string;
+    id: number;
 
 
     toPlainObject(){

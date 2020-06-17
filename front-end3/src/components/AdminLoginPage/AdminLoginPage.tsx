@@ -94,7 +94,7 @@ private doLogin() {
         }
 
         saveToken(res.data.token);
-            saveRefreshToken(res.data.refreshToken);
+        saveRefreshToken(res.data.refreshToken);
 
             this.setLoggedInState(true);
         });
