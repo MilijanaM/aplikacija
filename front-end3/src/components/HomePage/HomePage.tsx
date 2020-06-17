@@ -73,12 +73,12 @@ class HomePage extends React.Component {
     }
 
     render() {
-        if (this.state.isUserLoggedIn === false) {
+        /* if (this.state.isUserLoggedIn === false) {
             return (
                 <Redirect to="/user/login" />
             );
         }
-
+ */
         return (
             <Container>
                 <Card>
