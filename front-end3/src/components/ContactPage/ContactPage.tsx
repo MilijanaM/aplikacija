@@ -2,26 +2,39 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Container, Card, Form as BootstrapForm, Button, Row, Col } from 'react-bootstrap';
+import api, { ApiResponse } from '../../api/api';
 
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Formik, Form, Field} from "formik"
 
 export default class ContactPage extends React.Component {
+
+    private submitFeedback(name: string, message: string, mail: string) {
+        api('api/inbox/add', 'post', { name, mail, message })
+            .then((res: ApiResponse) => {
+                if (res.status === "error") {
+                    return false;
+                }
+            });
+        return true;
+    }
+
 
     render() {
         return (
             <Container>
                 <Formik
                     initialValues={{
-                        title: '',
-                        fullName: '',
-                        email: '',
-                        text: '',
+                        name: '',
+                        mail: '',
+                        message: '',
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            setSubmitting(false);
-                        }, 400);
+                        const flag = this.submitFeedback(values.name, values.message, values.mail);
+                        values.name = "";
+                        values.message = "";
+                        values.mail = "";
+                        flag ? alert("Poruka uspesno poslata!") : alert("Poruka uspesno poslata!");
+                        setSubmitting(false);
                     }}
                 >
                     {({ isSubmitting }) => (
@@ -32,24 +45,19 @@ export default class ContactPage extends React.Component {
                                         <Card>
                                             <Card.Body>
                                                 <Card.Title>
-                                                    <FontAwesomeIcon icon={faPhone} /> Contact details
+                                                    <FontAwesomeIcon icon={faPhone} /> Feedback
                                     </Card.Title>
-
                                                 <BootstrapForm.Group>
-                                                    <BootstrapForm.Label>Title</BootstrapForm.Label>
-                                                    <Field type="text" className="form-control" name="title" />
+                                                    <BootstrapForm.Label>Name</BootstrapForm.Label>
+                                                    <Field type="text" className="form-control" name="name" />
                                                 </BootstrapForm.Group>
                                                 <BootstrapForm.Group>
-                                                    <BootstrapForm.Label>Full Name</BootstrapForm.Label>
-                                                    <Field type="text" className="form-control" name="fullName" />
+                                                    <BootstrapForm.Label>Mail</BootstrapForm.Label>
+                                                    <Field type="text" className="form-control" name="mail" />
                                                 </BootstrapForm.Group>
                                                 <BootstrapForm.Group>
-                                                    <BootstrapForm.Label>Email</BootstrapForm.Label>
-                                                    <Field type="text" className="form-control" name="email" />
-                                                </BootstrapForm.Group>
-                                                <BootstrapForm.Group>
-                                                    <BootstrapForm.Label>Text</BootstrapForm.Label>
-                                                    <Field type="text" as="textarea" className="form-control" rows="3" name="text" />
+                                                    <BootstrapForm.Label>Message</BootstrapForm.Label>
+                                                    <Field type="text" as="textarea" className="form-control" rows="3" name="message" />
                                                 </BootstrapForm.Group>
                                                 <Button variant="primary" disabled={isSubmitting} type="submit">Submit</Button>
                                             </Card.Body>
