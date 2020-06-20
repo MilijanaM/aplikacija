@@ -53,7 +53,7 @@ export default class ContactPage extends React.Component {
                                                 </BootstrapForm.Group>
                                                 <BootstrapForm.Group>
                                                     <BootstrapForm.Label>Mail</BootstrapForm.Label>
-                                                    <Field type="text" className="form-control" name="mail" />
+                                                    <Field type="email" className="form-control" name="mail" />
                                                 </BootstrapForm.Group>
                                                 <BootstrapForm.Group>
                                                     <BootstrapForm.Label>Message</BootstrapForm.Label>
