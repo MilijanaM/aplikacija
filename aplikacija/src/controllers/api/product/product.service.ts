@@ -96,8 +96,9 @@ export class ProductService extends TypeOrmCrudService<Product>{
 
         console.log("editing product done");
 
-      
-        return await this.productRepository.findOne(id, {
+
+
+ return await this.productRepository.findOne(id, {
             relations: [
               "category",
               "productPrices",
@@ -105,7 +106,6 @@ export class ProductService extends TypeOrmCrudService<Product>{
             ]
           });
           
-         
     }
 
     async search(data: ProductSearchDto): Promise<Product[]>{
