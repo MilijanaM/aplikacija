@@ -13,7 +13,7 @@
   "author": "Milijana Miladinovic <milijana.miladinovic91@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql2": "^2.1.0"
   },
   "devDependencies": {},
